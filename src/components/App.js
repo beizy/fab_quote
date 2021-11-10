@@ -1,6 +1,6 @@
 import "../styles/app.css"
 import { useEffect } from "react"
-import { getRandomQuote, getQueryBg, getRandomBg } from "./apiCalls"
+
 import { Route } from "react-router-dom"
 import Random from "./Random.js"
 
