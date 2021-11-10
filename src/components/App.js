@@ -4,7 +4,7 @@ import { getRandomQuote, getQueryBg, getRandomBg } from "./apiCalls"
 
 function App() {
   useEffect(() => {
-    // getRandomQuote()
+    getRandomQuote()
     // getQueryBg()
     getRandomBg()
   }, [])
