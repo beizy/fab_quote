@@ -1,10 +1,11 @@
 import "../styles/App.css"
 import { useEffect } from "react"
-import { getRandomQuote, getRandomBg } from "./apiCalls"
+import { getRandomQuote, getQueryBg, getRandomBg } from "./apiCalls"
 
 function App() {
   useEffect(() => {
-    getRandomQuote()
+    // getRandomQuote()
+    // getQueryBg()
     getRandomBg()
   }, [])
 
