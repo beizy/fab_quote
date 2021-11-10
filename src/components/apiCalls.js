@@ -1,8 +1,7 @@
 // get random quote
 const getRandomQuote = () => {
-  fetch("http://api.quotable.io/random?maxLength=140")
-    .then(response => response.json())
-    .then(data => console.log("random quote", data))
+  return fetch("http://api.quotable.io/random?maxLength=140").then(response => response.json())
+  // .then(data => console.log("random quote", data))
 }
 
 // get random background image
@@ -16,12 +15,11 @@ const getRandomQuote = () => {
 // }
 
 const getRandomBg = () => {
-  fetch("https://api.unsplash.com/photos/random?query=quote+background", {
+  return fetch("https://api.unsplash.com/photos/random?query=quote+background&orientation=landscape", {
     method: "GET",
     headers: { Authorization: "Client-ID fFcbD9xA7ZDP9InTsckH5Vr23ilFp2m2AzwpepKXNG4" },
-  })
-    .then(response => response.json())
-    .then(data => console.log("unsplash random", data))
+  }).then(response => response.json())
+  // .then(data => console.log("unsplash random", data))
 }
 
 export { getRandomQuote, getRandomBg }
