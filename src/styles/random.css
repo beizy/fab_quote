@@ -7,7 +7,24 @@
 }
 
 .post {
+  box-sizing: content-box;
   width: 600px;
   height: 400px;
-  border: 1px solid black;
+  position: relative;
+}
+
+.quote-container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.quote-text,
+.quote-author {
+  text-align: center;
+}
+
+.quote-author {
+  margin-top: 10px;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import "../styles/random.css"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 
@@ -9,6 +9,10 @@ export default function Random() {
     bgUrl: "",
     pending: true,
   })
+
+  const [textColor, setTextColor] = useState("black")
+
+  const qContainerRef = useRef(null)
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
@@ -22,16 +26,49 @@ export default function Random() {
     })
   }, [])
 
+  const shuffleQuote = () => {
+    getRandomQuote().then(data =>
+      setRandomQuote({
+        ...randomQuote,
+        quoteText: data.content,
+        quoteAuthor: data.author,
+      })
+    )
+  }
+
+  const shuffleBg = () => {
+    getRandomBg().then(data =>
+      setRandomQuote({
+        ...randomQuote,
+        bgUrl: data.urls.regular,
+      })
+    )
+  }
+
+  const toggleTextTheme = () => {
+    qContainerRef.current.style.color === "black" ? setTextColor("white") : setTextColor("black")
+  }
+
   return (
     !randomQuote.pending && (
       <section className="random-container">
-        <div className="post" style={{ backgroundImage: `url(${randomQuote.bgUrl})`, backgroundSize: "contain" }}>
-          <h1 className="quote-text">{randomQuote.quoteText}</h1>
-          <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
+        <div
+          className="post"
+          style={{
+            backgroundImage: `url(${randomQuote.bgUrl})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="quote-container" ref={qContainerRef} style={{ color: `${textColor}` }}>
+            <h1 className="quote-text">{randomQuote.quoteText}</h1>
+            <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
+          </div>
         </div>
         <div className="button-holder">
-          <button>New Random Quote</button>
-          <button>New Random Image</button>
+          <button onClick={shuffleQuote}>New Random Quote</button>
+          <button onClick={shuffleBg}>New Random Image</button>
+          <button onClick={toggleTextTheme}>Change Text Theme </button>
           <button>Save This Quote</button>
         </div>
       </section>

@@ -15,7 +15,7 @@ const getRandomQuote = () => {
 // }
 
 const getRandomBg = () => {
-  return fetch("https://api.unsplash.com/photos/random?query=quote+background", {
+  return fetch("https://api.unsplash.com/photos/random?query=quote+background&orientation=landscape", {
     method: "GET",
     headers: { Authorization: "Client-ID fFcbD9xA7ZDP9InTsckH5Vr23ilFp2m2AzwpepKXNG4" },
   }).then(response => response.json())
