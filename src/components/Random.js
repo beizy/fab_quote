@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import "../styles/random.css"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
+import { AppContext } from "../context"
 
 export default function Random(props) {
-  const [randomQuote, setRandomQuote] = useState({
-    id: "",
-    quoteAuthor: "test",
-    quoteText: "test",
-    bgUrl: "",
-    pending: true,
-    isFaved: false,
-  })
+  const { randomQuote, setRandomQuote } = useContext(AppContext)
+  const [pending, setPending] = useState(true)
 
   const [textColor, setTextColor] = useState("black")
 
@@ -23,9 +18,9 @@ export default function Random(props) {
         quoteText: resArray[0].content,
         quoteAuthor: resArray[0].author,
         bgUrl: resArray[1].urls.regular,
-        pending: false,
         isFaved: false,
       })
+      setPending(false)
     })
   }, [])
 
@@ -55,7 +50,7 @@ export default function Random(props) {
   }
 
   return (
-    !randomQuote.pending && (
+    !pending && (
       <section className="random-container">
         <div
           className="post"
