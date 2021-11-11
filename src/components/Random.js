@@ -18,6 +18,7 @@ export default function Random(props) {
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
       setRandomQuote({
+        id: resArray[0]._id,
         quoteText: resArray[0].content,
         quoteAuthor: resArray[0].author,
         bgUrl: resArray[1].urls.regular,
@@ -30,6 +31,7 @@ export default function Random(props) {
     getRandomQuote().then(data =>
       setRandomQuote({
         ...randomQuote,
+        id: data._id,
         quoteText: data.content,
         quoteAuthor: data.author,
       })

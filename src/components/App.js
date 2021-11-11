@@ -9,8 +9,10 @@ function App() {
   const [favQuotes, setFavQuotes] = useState([])
 
   const addToFav = quote => {
+    console.log("addtofav in app fires")
     if (!favQuotes.some(ele => ele.id === quote.id)) {
       setFavQuotes([...favQuotes, quote])
+      console.log("addtofav inside if fires")
     }
   }
 
