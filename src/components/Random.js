@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from "react"
 import "../styles/random.css"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 
-export default function Random() {
+export default function Random(props) {
   const [randomQuote, setRandomQuote] = useState({
+    id: "",
     quoteAuthor: "test",
     quoteText: "test",
     bgUrl: "",
     pending: true,
+    isFaved: false,
   })
 
   const [textColor, setTextColor] = useState("black")
@@ -16,12 +18,13 @@ export default function Random() {
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
-      console.log(resArray)
       setRandomQuote({
+        id: resArray[0]._id,
         quoteText: resArray[0].content,
         quoteAuthor: resArray[0].author,
         bgUrl: resArray[1].urls.regular,
         pending: false,
+        isFaved: false,
       })
     })
   }, [])
@@ -30,8 +33,10 @@ export default function Random() {
     getRandomQuote().then(data =>
       setRandomQuote({
         ...randomQuote,
+        id: data._id,
         quoteText: data.content,
         quoteAuthor: data.author,
+        isFaved: false,
       })
     )
   }
@@ -69,7 +74,22 @@ export default function Random() {
           <button onClick={shuffleQuote}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
           <button onClick={toggleTextTheme}>Change Text Theme </button>
-          <button>Save This Quote</button>
+
+          {randomQuote.isFaved ? (
+            <button>❤️ Added to Favorites</button>
+          ) : (
+            <button
+              onClick={() => {
+                props.addToFav(randomQuote)
+                setRandomQuote({
+                  ...randomQuote,
+                  isFaved: true,
+                })
+              }}
+            >
+              Collect Quote Text
+            </button>
+          )}
         </div>
       </section>
     )
