@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react"
 import "../styles/random.css"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 
-export default function Random() {
+export default function Random(props) {
   const [randomQuote, setRandomQuote] = useState({
+    id: "",
     quoteAuthor: "test",
     quoteText: "test",
     bgUrl: "",
@@ -16,7 +17,6 @@ export default function Random() {
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
-      console.log(resArray)
       setRandomQuote({
         quoteText: resArray[0].content,
         quoteAuthor: resArray[0].author,
@@ -69,7 +69,13 @@ export default function Random() {
           <button onClick={shuffleQuote}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
           <button onClick={toggleTextTheme}>Change Text Theme </button>
-          <button>Save This Quote</button>
+          <button
+            onClick={() => {
+              props.addToFav(randomQuote)
+            }}
+          >
+            Collect Quote Text
+          </button>
         </div>
       </section>
     )
