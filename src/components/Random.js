@@ -4,7 +4,7 @@ import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
 export default function Random(props) {
-  const { randomQuote, setRandomQuote } = useContext(AppContext)
+  const { randomQuote, setRandomQuote, addToFav } = useContext(AppContext)
   const [pending, setPending] = useState(true)
 
   const [textColor, setTextColor] = useState("black")
@@ -75,7 +75,7 @@ export default function Random(props) {
           ) : (
             <button
               onClick={() => {
-                props.addToFav(randomQuote)
+                addToFav(randomQuote)
                 setRandomQuote({
                   ...randomQuote,
                   isFaved: true,

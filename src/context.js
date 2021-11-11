@@ -14,10 +14,10 @@ const ContextProvider = props => {
   const [favQuotes, setFavQuotes] = useState([])
 
   const addToFav = quote => {
-    console.log("addtofav in app fires")
+    // console.log("addtofav in app fires")
     if (!favQuotes.some(ele => ele.id === quote.id)) {
       setFavQuotes([...favQuotes, quote])
-      console.log("addtofav inside if fires")
+      // console.log("addtofav inside if fires")
     }
   }
   const deleteFromFav = quoteId => {
