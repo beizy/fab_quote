@@ -15,6 +15,10 @@ function App() {
       console.log("addtofav inside if fires")
     }
   }
+  const deleteFromFav = quoteId => {
+    let filtered = favQuotes.filter(ele => ele.id !== quoteId)
+    setFavQuotes(filtered)
+  }
 
   useEffect(() => {
     // getRandomQuote()
@@ -35,7 +39,7 @@ function App() {
       </div>
       <div className="body">
         <Route path="/" exact render={() => <Random addToFav={addToFav} />} />
-        <Route path="/favorites" exact render={() => <Favorites favQuotes={favQuotes} />} />
+        <Route path="/favorites" exact render={() => <Favorites favQuotes={favQuotes} delete={deleteFromFav} />} />
       </div>
       <footer>github.com/beizy/fab_quote</footer>
     </main>

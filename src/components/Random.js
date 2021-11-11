@@ -9,6 +9,7 @@ export default function Random(props) {
     quoteText: "test",
     bgUrl: "",
     pending: true,
+    isFaved: false,
   })
 
   const [textColor, setTextColor] = useState("black")
@@ -23,6 +24,7 @@ export default function Random(props) {
         quoteAuthor: resArray[0].author,
         bgUrl: resArray[1].urls.regular,
         pending: false,
+        isFaved: false,
       })
     })
   }, [])
@@ -34,6 +36,7 @@ export default function Random(props) {
         id: data._id,
         quoteText: data.content,
         quoteAuthor: data.author,
+        isFaved: false,
       })
     )
   }
@@ -71,13 +74,22 @@ export default function Random(props) {
           <button onClick={shuffleQuote}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
           <button onClick={toggleTextTheme}>Change Text Theme </button>
-          <button
-            onClick={() => {
-              props.addToFav(randomQuote)
-            }}
-          >
-            Collect Quote Text
-          </button>
+
+          {randomQuote.isFaved ? (
+            <button>❤️ Added to Favorites</button>
+          ) : (
+            <button
+              onClick={() => {
+                props.addToFav(randomQuote)
+                setRandomQuote({
+                  ...randomQuote,
+                  isFaved: true,
+                })
+              }}
+            >
+              Collect Quote Text
+            </button>
+          )}
         </div>
       </section>
     )
