@@ -7,8 +7,16 @@ import { AppContext } from "../context"
 import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
 export default function TextControl() {
-  const { randomQuote, diyQuote, setDiyQuote, quoteTag, setQuoteTag, diyQuotePosition, setDiyQuotePosition } =
-    useContext(AppContext)
+  const {
+    randomQuote,
+    diyQuote,
+    setDiyQuote,
+    quoteTag,
+    setQuoteTag,
+    diyQuotePosition,
+    setDiyQuotePosition,
+    toggleTextColor,
+  } = useContext(AppContext)
 
   const quoteTags = [
     { value: "famous-quotes", label: "famous quotes" },
@@ -19,6 +27,8 @@ export default function TextControl() {
     { value: "technology", label: "technology" },
     { value: "wisdom", label: "wisdom" },
   ]
+
+  const fonts = []
 
   useEffect(() => {
     setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })
@@ -98,6 +108,9 @@ export default function TextControl() {
         inputProps={{ name: "left" }}
         onChange={handlePostion}
       />
+      <Button variant="outlined" onClick={toggleTextColor}>
+        Change Quote Color
+      </Button>
     </div>
   )
 }

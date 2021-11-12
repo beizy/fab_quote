@@ -19,13 +19,11 @@ const ContextProvider = props => {
 
   const [quoteTag, setQuoteTag] = useState("")
   const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
-  const [textTheme, setTextTheme] = useState("black")
+  const [textColor, setTextColor] = useState("black")
 
   const addToFav = quote => {
-    // console.log("addtofav in app fires")
     if (!favQuotes.some(ele => ele.id === quote.id)) {
       setFavQuotes([...favQuotes, quote])
-      // console.log("addtofav inside if fires")
     }
   }
   const deleteFromFav = quoteId => {
@@ -33,8 +31,8 @@ const ContextProvider = props => {
     setFavQuotes(filtered)
   }
 
-  const toggleTextTheme = ref => {
-    ref.current.style.color === "black" ? setTextTheme("white") : setTextTheme("black")
+  const toggleTextColor = () => {
+    textColor === "black" ? setTextColor("white") : setTextColor("black")
   }
   return (
     <AppContext.Provider
@@ -51,8 +49,8 @@ const ContextProvider = props => {
         setQuoteTag,
         diyQuotePosition,
         setDiyQuotePosition,
-        textTheme,
-        toggleTextTheme,
+        textColor,
+        toggleTextColor,
       }}
     >
       {props.children}
