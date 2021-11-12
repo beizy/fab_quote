@@ -22,4 +22,8 @@ const getRandomBg = () => {
   // .then(data => console.log("unsplash random", data))
 }
 
-export { getRandomQuote, getRandomBg }
+const getQuoteByTag = tag => {
+  return fetch(`http://api.quotable.io/random?maxLength=140&tags=${tag}`).then(response => response.json())
+}
+
+export { getRandomQuote, getRandomBg, getQuoteByTag }

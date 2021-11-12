@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react"
 import "../styles/random.css"
+// import TextField from "@mui/material/TextField"
+// import MenuItem from "@mui/material/MenuItem"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
