@@ -6,10 +6,10 @@ import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
 export default function Random() {
-  const { randomQuote, setRandomQuote, addToFav } = useContext(AppContext)
+  const { randomQuote, setRandomQuote, addToFav, textTheme, toggleTextTheme } = useContext(AppContext)
   const [pending, setPending] = useState(true)
 
-  const [textColor, setTextColor] = useState("black")
+  // const [textColor, setTextColor] = useState("black")
 
   const qContainerRef = useRef(null)
 
@@ -47,9 +47,9 @@ export default function Random() {
     )
   }
 
-  const toggleTextTheme = () => {
-    qContainerRef.current.style.color === "black" ? setTextColor("white") : setTextColor("black")
-  }
+  // const toggleTextTheme = () => {
+  //   qContainerRef.current.style.color === "black" ? setTextColor("white") : setTextColor("black")
+  // }
 
   return (
     !pending && (
@@ -62,7 +62,7 @@ export default function Random() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="quote-container" ref={qContainerRef} style={{ color: `${textColor}` }}>
+          <div className="quote-container" ref={qContainerRef} style={{ color: `${textTheme}` }}>
             <h1 className="quote-text">{randomQuote.quoteText}</h1>
             <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
           </div>
@@ -70,7 +70,7 @@ export default function Random() {
         <div className="button-holder">
           <button onClick={shuffleQuote}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
-          <button onClick={toggleTextTheme}>Change Text Theme </button>
+          <button onClick={() => toggleTextTheme(qContainerRef)}>Change Text Theme </button>
 
           {randomQuote.isFaved ? (
             <button>❤️ Added to Favorites</button>

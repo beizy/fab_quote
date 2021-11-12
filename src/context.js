@@ -19,6 +19,7 @@ const ContextProvider = props => {
 
   const [quoteTag, setQuoteTag] = useState("")
   const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
+  const [textTheme, setTextTheme] = useState("black")
 
   const addToFav = quote => {
     // console.log("addtofav in app fires")
@@ -32,6 +33,9 @@ const ContextProvider = props => {
     setFavQuotes(filtered)
   }
 
+  const toggleTextTheme = ref => {
+    ref.current.style.color === "black" ? setTextTheme("white") : setTextTheme("black")
+  }
   return (
     <AppContext.Provider
       value={{
@@ -47,6 +51,8 @@ const ContextProvider = props => {
         setQuoteTag,
         diyQuotePosition,
         setDiyQuotePosition,
+        textTheme,
+        toggleTextTheme,
       }}
     >
       {props.children}
