@@ -4,20 +4,21 @@ import TextField from "@mui/material/TextField"
 import { AppContext } from "../context"
 
 export default function TextControl() {
-  const { randomQuote } = useContext(AppContext)
-  const [author, setAuthor] = useState(randomQuote.quoteAuthor)
-  const [text, setText] = useState(randomQuote.quoteText)
+  const { randomQuote, diyAuthor, setDiyAuthor, diyText, setDiyText } = useContext(AppContext)
+  // const [author, setAuthor] = useState(randomQuote.quoteAuthor)
+  // const [text, setText] = useState(randomQuote.quoteText)
 
-  // useEffect (()=>{
-
-  // })
+  useEffect(() => {
+    setDiyAuthor(randomQuote.quoteAuthor)
+    setDiyText(randomQuote.quoteText)
+  }, [])
 
   const handleAuthor = event => {
-    setAuthor(event.target.value)
+    setDiyAuthor(event.target.value)
   }
 
   const handleText = event => {
-    setText(event.target.value)
+    setDiyText(event.target.value)
   }
 
   return (
@@ -27,12 +28,10 @@ export default function TextControl() {
         id="outlined-multiline-flexible"
         name="author"
         label="Author"
-        // multiline
-        // maxRows={4}
-        value={author}
+        value={diyAuthor}
         onChange={handleAuthor}
       />
-      <TextField id="outlined-multiline-static" label="Text" multiline rows={4} value={text} onChange={handleText} />
+      <TextField id="outlined-multiline-static" label="Text" multiline rows={4} value={diyText} onChange={handleText} />
     </div>
   )
 }

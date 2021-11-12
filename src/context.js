@@ -5,13 +5,16 @@ const AppContext = createContext({})
 const ContextProvider = props => {
   const [randomQuote, setRandomQuote] = useState({
     id: "",
-    quoteAuthor: "test",
-    quoteText: "test",
+    quoteAuthor: "Go to homepage to see one",
+    quoteText: "No quote yet! ",
     bgUrl: "",
     pending: true,
     isFaved: false,
   })
   const [favQuotes, setFavQuotes] = useState([])
+
+  const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
+  const [diyText, setDiyText] = useState(randomQuote.quoteText)
 
   const addToFav = quote => {
     // console.log("addtofav in app fires")
@@ -26,7 +29,20 @@ const ContextProvider = props => {
   }
 
   return (
-    <AppContext.Provider value={{ randomQuote, setRandomQuote, favQuotes, setFavQuotes, addToFav, deleteFromFav }}>
+    <AppContext.Provider
+      value={{
+        randomQuote,
+        setRandomQuote,
+        favQuotes,
+        setFavQuotes,
+        addToFav,
+        deleteFromFav,
+        diyAuthor,
+        setDiyAuthor,
+        diyText,
+        setDiyText,
+      }}
+    >
       {props.children}
     </AppContext.Provider>
   )
