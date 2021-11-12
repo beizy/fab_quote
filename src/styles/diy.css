@@ -1,0 +1,18 @@
+.diy-container {
+  display: grid;
+  grid-template-columns: 1fr 650px 1fr;
+  /* grid-template-rows: 1fr; */
+  height: 100%;
+}
+
+.text-control-holder {
+  border: 1px solid cyan;
+}
+
+.post-holder {
+  border: 1px solid darkgreen;
+}
+
+.image-control-holder {
+  border: 1px solid darkmagenta;
+}

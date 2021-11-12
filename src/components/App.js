@@ -2,8 +2,9 @@ import "../styles/app.css"
 import { useState } from "react"
 
 import { Route, Link } from "react-router-dom"
-import Random from "./Random.js"
+import Random from "./Random"
 import Favorites from "./Favorites"
+import Diy from "./Diy"
 import { ContextProvider } from "../context"
 
 function App() {
@@ -15,13 +16,14 @@ function App() {
           My Favorite Quotes
         </Link>
         <Link to="/diy" className="diy-link">
-          DIY Quote Card{" "}
+          Make My Own
         </Link>
       </div>
       <ContextProvider>
         <div className="body">
-          <Route path="/" exact render={() => <Random />} />
-          <Route path="/favorites" exact render={() => <Favorites />} />
+          <Route path="/" exact component={Random} />
+          <Route path="/favorites" exact component={Favorites} />
+          <Route path="/diy" exact component={Diy} />
         </div>
       </ContextProvider>
       <footer>github.com/beizy/fab_quote</footer>
