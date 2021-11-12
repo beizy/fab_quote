@@ -28,7 +28,7 @@ export default function TextControl() {
     { value: "wisdom", label: "wisdom" },
   ]
 
-  const fonts = []
+  const fonts = ["Playfair Display"]
 
   useEffect(() => {
     setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })

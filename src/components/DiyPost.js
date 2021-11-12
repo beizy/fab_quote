@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { AppContext } from "../context"
 
 export default function DiyPost() {
-  const { randomQuote, diyQuote, diyQuotePosition, textColor } = useContext(AppContext)
+  const { randomQuote, diyQuote, diyQuotePosition, textColor, diyQuoteFont } = useContext(AppContext)
 
   return (
     <div className="post-holder">
@@ -14,7 +14,10 @@ export default function DiyPost() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="quote-container" style={{ ...diyQuotePosition, color: `${textColor}` }}>
+        <div
+          className="quote-container"
+          style={{ ...diyQuotePosition, color: `${textColor}`, fontFamily: `${diyQuoteFont}` }}
+        >
           <h1 className="quote-text">{diyQuote.text}</h1>
           <h4 className="quote-author">{diyQuote.author}</h4>
         </div>
