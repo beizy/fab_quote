@@ -1,25 +1,14 @@
-import React, { useState, useContext, useEffect } from "react"
-// import Box from "@mui/material/Box"
+import React, { useContext, useEffect } from "react"
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 import InputAdornment from "@mui/material/InputAdornment"
-
 import { AppContext } from "../context"
 import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
 export default function TextControl() {
-  const {
-    randomQuote,
-    diyAuthor,
-    setDiyAuthor,
-    diyText,
-    setDiyText,
-    quoteTag,
-    setQuoteTag,
-    diyQuotePosition,
-    setDiyQuotePosition,
-  } = useContext(AppContext)
+  const { randomQuote, diyQuote, setDiyQuote, quoteTag, setQuoteTag, diyQuotePosition, setDiyQuotePosition } =
+    useContext(AppContext)
 
   const quoteTags = [
     { value: "famous-quotes", label: "famous quotes" },
@@ -31,20 +20,12 @@ export default function TextControl() {
     { value: "wisdom", label: "wisdom" },
   ]
 
-  // const fromTop = useRef(0)
-  // const fromLeft = useRef(0)
-
   useEffect(() => {
-    setDiyAuthor(randomQuote.quoteAuthor)
-    setDiyText(randomQuote.quoteText)
+    setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })
   }, [])
 
-  const handleAuthor = event => {
-    setDiyAuthor(event.target.value)
-  }
-
-  const handleText = event => {
-    setDiyText(event.target.value)
+  const handleDiyQuote = event => {
+    setDiyQuote({ ...diyQuote, [event.target.name]: event.target.value })
   }
 
   const handleTag = event => {
@@ -52,58 +33,40 @@ export default function TextControl() {
   }
 
   const handleBtn = () => {
-    // console.log("handle btn fires")
     if (quoteTag !== "any category") {
       getQuoteByTag(quoteTag).then(data => {
-        setDiyAuthor(data.author)
-        setDiyText(data.content)
+        setDiyQuote({ author: data.author, text: data.content })
       })
     } else {
       getRandomQuote().then(data => {
-        setDiyAuthor(data.author)
-        setDiyText(data.content)
+        setDiyQuote({ author: data.author, text: data.content })
       })
     }
   }
 
-  const handlePTop = event => {
-    setDiyQuotePosition({ ...diyQuotePosition, top: parseInt(event.target.value) })
-  }
-
-  const handlePLeft = event => {
-    console.log("handle left fires, value", event.target.value)
-    setDiyQuotePosition({ ...diyQuotePosition, left: parseInt(event.target.value) })
+  const handlePostion = event => {
+    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: parseInt(event.target.value) })
   }
 
   return (
     <div className="text-control-holder">
       <TextField
-        id="outlined-multiline-flexible"
         label="Quote Author"
         size="small"
-        inputProps={{ maxLength: 20 }}
-        value={diyAuthor}
-        onChange={handleAuthor}
+        inputProps={{ maxLength: 20, name: "author" }}
+        value={diyQuote.author}
+        onChange={handleDiyQuote}
       />
       <TextField
-        id="outlined-multiline-static"
         label="Quote Text"
         multiline
-        rows={4}
         maxRows={5}
         size="small"
-        value={diyText}
-        inputProps={{ maxLength: 140 }}
-        onChange={handleText}
+        value={diyQuote.text}
+        inputProps={{ maxLength: 140, name: "text" }}
+        onChange={handleDiyQuote}
       />
-      <TextField
-        id="outlined-select-currency"
-        select
-        size="small"
-        label="Select Quote Category"
-        value={quoteTag}
-        onChange={handleTag}
-      >
+      <TextField select size="small" label="Select Quote Category" value={quoteTag} onChange={handleTag}>
         {quoteTags.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
@@ -115,7 +78,6 @@ export default function TextControl() {
         Get A New Quote on Chosen Category
       </Button>
       <TextField
-        // inputRef={fromTop}
         label="Position from Top"
         id="outlined-start-adornment"
         // sx={{ m: 1, width: "25ch" }}
@@ -123,7 +85,8 @@ export default function TextControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
-        onChange={handlePTop}
+        inputProps={{ name: "top" }}
+        onChange={handlePostion}
       />
       <TextField
         label="Position from Left"
@@ -132,8 +95,8 @@ export default function TextControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
-        // inputProps={{ style: { fontSize: 12 } }}
-        onChange={handlePLeft}
+        inputProps={{ name: "left" }}
+        onChange={handlePostion}
       />
     </div>
   )

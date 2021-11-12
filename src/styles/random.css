@@ -23,6 +23,7 @@
 .quote-text,
 .quote-author {
   text-align: center;
+  text-wrap: wrap;
 }
 
 .quote-author {

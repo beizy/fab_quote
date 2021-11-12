@@ -13,11 +13,12 @@ const ContextProvider = props => {
   })
   const [favQuotes, setFavQuotes] = useState([])
 
-  const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
-  const [diyText, setDiyText] = useState(randomQuote.quoteText)
+  // const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
+  // const [diyText, setDiyText] = useState(randomQuote.quoteText)
+  const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
 
   const [quoteTag, setQuoteTag] = useState("")
-  const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 0, left: 0 })
+  const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
 
   const addToFav = quote => {
     // console.log("addtofav in app fires")
@@ -40,10 +41,8 @@ const ContextProvider = props => {
         setFavQuotes,
         addToFav,
         deleteFromFav,
-        diyAuthor,
-        setDiyAuthor,
-        diyText,
-        setDiyText,
+        diyQuote,
+        setDiyQuote,
         quoteTag,
         setQuoteTag,
         diyQuotePosition,
