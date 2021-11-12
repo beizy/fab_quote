@@ -3,7 +3,7 @@ import "../styles/random.css"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
-export default function Random(props) {
+export default function Random() {
   const { randomQuote, setRandomQuote, addToFav } = useContext(AppContext)
   const [pending, setPending] = useState(true)
 
@@ -74,7 +74,8 @@ export default function Random(props) {
             <button>❤️ Added to Favorites</button>
           ) : (
             <button
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault()
                 addToFav(randomQuote)
                 setRandomQuote({
                   ...randomQuote,

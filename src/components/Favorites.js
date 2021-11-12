@@ -1,16 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
+import { AppContext } from "../context"
 import FavCard from "./FavCard"
 
-export default function Favorites(props) {
-  const favCards = props.favQuotes.map(ele => {
-    return (
-      <FavCard key={ele.id} id={ele.id} quoteText={ele.quoteText} quoteAuthor={ele.quoteAuthor} delete={props.delete} />
-    )
+export default function Favorites() {
+  const { favQuotes } = useContext(AppContext)
+  const favCards = favQuotes.map(ele => {
+    return <FavCard key={ele.id} id={ele.id} quoteText={ele.quoteText} quoteAuthor={ele.quoteAuthor} />
   })
 
   return (
-    <div className="card-container">
-      {props.favQuotes.length ? favCards : "Favorite list is empty! Go collect some!"}
-    </div>
+    <div className="card-container">{favQuotes.length ? favCards : "Favorite list is empty! Go collect some!"}</div>
   )
 }
