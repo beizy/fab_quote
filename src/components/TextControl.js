@@ -67,12 +67,12 @@ export default function TextControl() {
   }
 
   const handlePTop = event => {
-    setDiyQuotePosition({ ...diyQuotePosition, top: event.target.value })
+    setDiyQuotePosition({ ...diyQuotePosition, top: parseInt(event.target.value) })
   }
 
   const handlePLeft = event => {
     console.log("handle left fires, value", event.target.value)
-    setDiyQuotePosition({ ...diyQuotePosition, left: event.target.value })
+    setDiyQuotePosition({ ...diyQuotePosition, left: parseInt(event.target.value) })
   }
 
   return (
