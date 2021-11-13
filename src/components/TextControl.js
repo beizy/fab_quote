@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react"
-import Button from "@mui/material/Button"
+// import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-import InputAdornment from "@mui/material/InputAdornment"
+// import InputAdornment from "@mui/material/InputAdornment"
 import { AppContext } from "../context"
 // import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
@@ -11,11 +11,11 @@ export default function TextControl() {
     randomQuote,
     diyQuote,
     setDiyQuote,
-    quoteTag,
-    setQuoteTag,
+    // quoteTag,
+    // setQuoteTag,
     diyQuotePosition,
     setDiyQuotePosition,
-    toggleTextColor,
+    // toggleTextColor,
     diyQuoteFont,
     setDiyQuoteFont,
   } = useContext(AppContext)
@@ -48,11 +48,16 @@ export default function TextControl() {
     { value: "Nothing You Could Do", label: "Nothing You Could Do" },
   ]
 
+  const colors = [
+    {value:, label:}
+
+  ]
+
   useEffect(() => {
     setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })
   }, [])
 
-  const handleDiyQuote = event => {
+  const handleText = event => {
     setDiyQuote({ ...diyQuote, [event.target.name]: event.target.value })
   }
 
@@ -60,8 +65,8 @@ export default function TextControl() {
     setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: parseInt(event.target.value) })
   }
 
-  const handleFamily = event => {
-    setDiyQuoteFont({ ...diyQuoteFont, family: event.target.value })
+  const handleFont = event => {
+    setDiyQuoteFont({ ...diyQuoteFont, [event.target.name]: event.target.value })
   }
 
   return (
@@ -71,7 +76,7 @@ export default function TextControl() {
         size="small"
         inputProps={{ maxLength: 20, name: "author" }}
         value={diyQuote.author}
-        onChange={handleDiyQuote}
+        onChange={handleText}
       />
       <TextField
         label="Quote Text"
@@ -80,9 +85,9 @@ export default function TextControl() {
         size="small"
         value={diyQuote.text}
         inputProps={{ maxLength: 140, name: "text" }}
-        onChange={handleDiyQuote}
+        onChange={handleText}
       />
-      <TextField select size="small" label="Font" value={diyQuoteFont.family} onChange={handleFamily}>
+      <TextField select size="small" label="Font" inputProps={{name: "family" }} value={diyQuoteFont.family} onChange={handleFont}>
         {fonts.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
@@ -90,7 +95,7 @@ export default function TextControl() {
         ))}
       </TextField>
 
-      <TextField
+      {/* <TextField
         label="Position from Top"
         id="outlined-start-adornment"
         // sx={{ m: 1, width: "25ch" }}
@@ -110,10 +115,18 @@ export default function TextControl() {
         }}
         inputProps={{ name: "left" }}
         onChange={handlePostion}
-      />
-      <Button variant="outlined" onClick={toggleTextColor}>
+      /> */}
+      {/* <Button variant="outlined" onClick={toggleTextColor}>
         Change Quote Color
-      </Button>
+      </Button> */}
+      <TextField select size="small" label="Color" 
+       inputProps={{name: "color" }}value={diyQuoteFont.color} onChange={handleFont}>
+        {colors.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
     </div>
   )
 }
