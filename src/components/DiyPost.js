@@ -42,7 +42,12 @@ export default function DiyPost() {
       >
         <div
           className="quote-container"
-          style={{ ...diyQuotePosition, color: `${textColor}`, fontFamily: "Permanent Marker", fontStyle: "normal" }}
+          style={{
+            ...diyQuotePosition,
+            color: `${textColor}`,
+            fontFamily: `${diyQuoteFont.family}`,
+            fontStyle: "normal",
+          }}
         >
           <h1 className="quote-text">{diyQuote.text}</h1>
           <h4 className="quote-author">{diyQuote.author}</h4>
