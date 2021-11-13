@@ -16,6 +16,8 @@ export default function TextControl() {
     diyQuotePosition,
     setDiyQuotePosition,
     toggleTextColor,
+    diyQuoteFont,
+    setDiyQuoteFont,
   } = useContext(AppContext)
 
   const quoteTags = [
@@ -28,7 +30,23 @@ export default function TextControl() {
     { value: "wisdom", label: "wisdom" },
   ]
 
-  const fonts = ["Playfair Display"]
+  const fonts = [
+    { value: "Montserrat", lable: "Montserrat" },
+    { value: "Raleway", lable: "Raleway" },
+    { value: "Chivo", lable: "Chivo" },
+    { value: "Oswald", lable: "Oswald" },
+    { value: "Julius Sans One", lable: "Julius Sans One" },
+    { value: "Playfair Display", lable: "Playfair Display" },
+    { value: "Abril Fatface", lable: "Abril Fatface" },
+    { value: "Arvo", lable: "Arvo" },
+    { value: "Old Standard TT", lable: "Old Standard TT" },
+    { value: "Libre Baskerville", lable: "Libre Baskerville" },
+    { value: "Permanent Marker", lable: "Permanent Marker" },
+    { value: "Pacifico", lable: "Pacifico" },
+    { value: "Amatic SC", lable: "Amatic SC" },
+    { value: "Homemade Apple", lable: "Homemade Apple" },
+    { value: "Nothing You Could Do", lable: "Nothing You Could Do" },
+  ]
 
   useEffect(() => {
     setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })
@@ -58,6 +76,10 @@ export default function TextControl() {
     setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: parseInt(event.target.value) })
   }
 
+  const handleFamily = event => {
+    setDiyQuoteFont({ ...diyQuoteFont, family: event.target.value })
+  }
+
   return (
     <div className="text-control-holder">
       <TextField
@@ -76,7 +98,7 @@ export default function TextControl() {
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleDiyQuote}
       />
-      <TextField select size="small" label="Select Quote Category" value={quoteTag} onChange={handleTag}>
+      <TextField select size="small" label="Quote" value={quoteTag} onChange={handleTag}>
         {quoteTags.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
@@ -111,6 +133,13 @@ export default function TextControl() {
       <Button variant="outlined" onClick={toggleTextColor}>
         Change Quote Color
       </Button>
+      <TextField select size="small" label="Font" value={diyQuoteFont.family} onChange={handleFamily}>
+        {fonts.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
     </div>
   )
 }
