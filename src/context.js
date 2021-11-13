@@ -11,15 +11,14 @@ const ContextProvider = props => {
     pending: true,
     isFaved: false,
   })
+  const [quoteTag, setQuoteTag] = useState("")
   const [favQuotes, setFavQuotes] = useState([])
+  const [textColor, setTextColor] = useState("black")
+  // const [queryBgUrls, setQueryBgUrls] = useState([])
 
-  // const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
-  // const [diyText, setDiyText] = useState(randomQuote.quoteText)
   const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
 
-  const [quoteTag, setQuoteTag] = useState("")
   const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
-  const [textColor, setTextColor] = useState("black")
   const [diyQuoteFont, setDiyQuoteFont] = useState({ family: "sans-serif", size: 16 })
 
   const addToFav = quote => {

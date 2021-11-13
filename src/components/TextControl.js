@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 import InputAdornment from "@mui/material/InputAdornment"
 import { AppContext } from "../context"
-import { getQuoteByTag, getRandomQuote } from "./apiCalls"
+// import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
 export default function TextControl() {
   const {
@@ -56,22 +56,6 @@ export default function TextControl() {
     setDiyQuote({ ...diyQuote, [event.target.name]: event.target.value })
   }
 
-  const handleTag = event => {
-    setQuoteTag(event.target.value)
-  }
-
-  const handleBtn = () => {
-    if (quoteTag !== "any category") {
-      getQuoteByTag(quoteTag).then(data => {
-        setDiyQuote({ author: data.author, text: data.content })
-      })
-    } else {
-      getRandomQuote().then(data => {
-        setDiyQuote({ author: data.author, text: data.content })
-      })
-    }
-  }
-
   const handlePostion = event => {
     setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: parseInt(event.target.value) })
   }
@@ -98,17 +82,14 @@ export default function TextControl() {
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleDiyQuote}
       />
-      <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
-        {quoteTags.map(option => (
+      <TextField select size="small" label="Font" value={diyQuoteFont.family} onChange={handleFamily}>
+        {fonts.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
         ))}
-        <MenuItem value="any category">any category</MenuItem>
       </TextField>
-      <Button variant="outlined" onClick={handleBtn}>
-        Get A New Quote on Chosen Category
-      </Button>
+
       <TextField
         label="Position from Top"
         id="outlined-start-adornment"
@@ -133,13 +114,6 @@ export default function TextControl() {
       <Button variant="outlined" onClick={toggleTextColor}>
         Change Quote Color
       </Button>
-      <TextField select size="small" label="Font" value={diyQuoteFont.family} onChange={handleFamily}>
-        {fonts.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
     </div>
   )
 }
