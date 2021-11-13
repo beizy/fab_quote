@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import "../styles/random.css"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
@@ -32,13 +32,10 @@ export default function Random() {
     { value: "technology", label: "technology" },
     { value: "wisdom", label: "wisdom" },
   ]
-  const handleTag = event => {
-    setQuoteTag(event.target.value)
-    shuffleQuote()
-  }
 
-  const shuffleQuote = () => {
-    getRandomQuote(quoteTag).then(data =>
+  const shuffleQuote = tag => {
+    getRandomQuote(tag).then(data => {
+      console.log(data)
       setRandomQuote({
         ...randomQuote,
         id: data._id,
@@ -46,7 +43,7 @@ export default function Random() {
         quoteAuthor: data.author,
         isFaved: false,
       })
-    )
+    })
   }
 
   const shuffleBg = () => {
@@ -58,11 +55,16 @@ export default function Random() {
     )
   }
 
+  const handleTag = event => {
+    setQuoteTag(event.target.value)
+    shuffleQuote(event.target.value)
+  }
+
   return (
     !pending && (
       <section className="random-container">
         <div className="button-holder">
-          <button onClick={shuffleQuote}>New Random Quote</button>
+          <button onClick={() => shuffleQuote(quoteTag)}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
           <button onClick={toggleTextColor}>Change Text Theme </button>
 
