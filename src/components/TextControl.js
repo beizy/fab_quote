@@ -31,21 +31,21 @@ export default function TextControl() {
   ]
 
   const fonts = [
-    { value: "Montserrat", lable: "Montserrat" },
-    { value: "Raleway", lable: "Raleway" },
-    { value: "Chivo", lable: "Chivo" },
-    { value: "Oswald", lable: "Oswald" },
-    { value: "Julius Sans One", lable: "Julius Sans One" },
-    { value: "Playfair Display", lable: "Playfair Display" },
-    { value: "Abril Fatface", lable: "Abril Fatface" },
-    { value: "Arvo", lable: "Arvo" },
-    { value: "Old Standard TT", lable: "Old Standard TT" },
-    { value: "Libre Baskerville", lable: "Libre Baskerville" },
-    { value: "Permanent Marker", lable: "Permanent Marker" },
-    { value: "Pacifico", lable: "Pacifico" },
-    { value: "Amatic SC", lable: "Amatic SC" },
-    { value: "Homemade Apple", lable: "Homemade Apple" },
-    { value: "Nothing You Could Do", lable: "Nothing You Could Do" },
+    { value: "Montserrat", label: "Montserrat" },
+    { value: "Raleway", label: "Raleway" },
+    { value: "Chivo", label: "Chivo" },
+    { value: "Oswald", label: "Oswald" },
+    { value: "Julius Sans One", label: "Julius Sans One" },
+    { value: "Playfair Display", label: "Playfair Display" },
+    { value: "Abril Fatface", label: "Abril Fatface" },
+    { value: "Arvo", label: "Arvo" },
+    { value: "Old Standard TT", label: "Old Standard TT" },
+    { value: "Libre Baskerville", label: "Libre Baskerville" },
+    { value: "Permanent Marker", label: "Permanent Marker" },
+    { value: "Pacifico", label: "Pacifico" },
+    { value: "Amatic SC", label: "Amatic SC" },
+    { value: "Homemade Apple", label: "Homemade Apple" },
+    { value: "Nothing You Could Do", label: "Nothing You Could Do" },
   ]
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function TextControl() {
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleDiyQuote}
       />
-      <TextField select size="small" label="Quote" value={quoteTag} onChange={handleTag}>
+      <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
         {quoteTags.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
