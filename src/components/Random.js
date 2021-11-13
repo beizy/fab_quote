@@ -3,7 +3,7 @@ import "../styles/random.css"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 // import Box from "@mui/material/Box"
-import { getRandomQuote, getRandomBg } from "./apiCalls"
+import { getRandomQuote, getRandomBg, getBgByQuery } from "./apiCalls"
 import { AppContext } from "../context"
 
 export default function Random() {
@@ -11,6 +11,7 @@ export default function Random() {
     useContext(AppContext)
   const [pending, setPending] = useState(true)
   const [searchInput, setSearchInput] = useState("")
+  // const [bgUrls, setBgUrls] = useState([])
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
@@ -34,6 +35,8 @@ export default function Random() {
     { value: "technology", label: "technology" },
     { value: "wisdom", label: "wisdom" },
   ]
+
+  let bgUrls = []
 
   const shuffleQuote = tag => {
     getRandomQuote(tag).then(data => {
@@ -64,8 +67,16 @@ export default function Random() {
 
   const handleSearch = event => {
     event.preventDefault()
-    console.log("handle search fires")
-    console.log("search input", searchInput)
+    let temp = searchInput.split(" ")
+    let searchTerm = temp.length > 1 ? temp.join("+") : temp
+    console.log("search term", searchTerm)
+    getBgByQuery(searchTerm)
+      .then(data => {
+        bgUrls = data.results.map(ele => ele.urls.regular)
+        // console.log("results", results)
+        console.log("bgurls", bgUrls)
+      })
+      .then(data => console.log("second .then data", data))
   }
 
   return (
