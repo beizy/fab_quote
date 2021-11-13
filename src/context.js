@@ -5,7 +5,7 @@ const AppContext = createContext({})
 const ContextProvider = props => {
   const [randomQuote, setRandomQuote] = useState({
     id: "",
-    quoteAuthor: "Go to homepage to see one",
+    quoteAuthor: "Wise Man",
     quoteText: "No quote yet! ",
     bgUrl: "",
     pending: true,
@@ -13,14 +13,18 @@ const ContextProvider = props => {
   })
   const [favQuotes, setFavQuotes] = useState([])
 
-  const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
-  const [diyText, setDiyText] = useState(randomQuote.quoteText)
+  // const [diyAuthor, setDiyAuthor] = useState(randomQuote.quoteAuthor)
+  // const [diyText, setDiyText] = useState(randomQuote.quoteText)
+  const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
+
+  const [quoteTag, setQuoteTag] = useState("")
+  const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
+  const [textColor, setTextColor] = useState("black")
+  const [diyQuoteFont, setDiyQuoteFont] = useState({ family: "sans-serif", size: 16 })
 
   const addToFav = quote => {
-    // console.log("addtofav in app fires")
     if (!favQuotes.some(ele => ele.id === quote.id)) {
       setFavQuotes([...favQuotes, quote])
-      // console.log("addtofav inside if fires")
     }
   }
   const deleteFromFav = quoteId => {
@@ -28,6 +32,9 @@ const ContextProvider = props => {
     setFavQuotes(filtered)
   }
 
+  const toggleTextColor = () => {
+    textColor === "black" ? setTextColor("white") : setTextColor("black")
+  }
   return (
     <AppContext.Provider
       value={{
@@ -37,10 +44,16 @@ const ContextProvider = props => {
         setFavQuotes,
         addToFav,
         deleteFromFav,
-        diyAuthor,
-        setDiyAuthor,
-        diyText,
-        setDiyText,
+        diyQuote,
+        setDiyQuote,
+        quoteTag,
+        setQuoteTag,
+        diyQuotePosition,
+        setDiyQuotePosition,
+        textColor,
+        toggleTextColor,
+        diyQuoteFont,
+        setDiyQuoteFont,
       }}
     >
       {props.children}
