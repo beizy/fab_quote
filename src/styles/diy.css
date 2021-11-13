@@ -14,8 +14,15 @@
   padding: 20px 5px;
 }
 
-.post-holder {
+.diy-post-holder {
   border: 1px solid darkgreen;
+}
+
+.diy-post {
+  box-sizing: content-box;
+  width: 600px;
+  height: 400px;
+  position: relative;
 }
 
 .image-control-holder {

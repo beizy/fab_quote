@@ -49,8 +49,15 @@ export default function TextControl() {
   ]
 
   const colors = [
-    {value:, label:}
-
+    { value: "#222222", label: "Dusk" },
+    { value: "#43302E", label: "Old Burgundy" },
+    { value: "#565051", label: "Vampire" },
+    { value: "#494F55", label: "Abbey" },
+    { value: "#7f4737", label: "Sienna" },
+    { value: "#F4E4F8", label: "Lavendar" },
+    { value: "#DBE2E9", label: "Chrome" },
+    { value: "#E5E1E6", label: "Platinum" },
+    { value: "#FFFFED", label: "Pale Yellow" },
   ]
 
   useEffect(() => {
@@ -87,7 +94,14 @@ export default function TextControl() {
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleText}
       />
-      <TextField select size="small" label="Font" inputProps={{name: "family" }} value={diyQuoteFont.family} onChange={handleFont}>
+      <TextField
+        select
+        size="small"
+        label="Font"
+        inputProps={{ name: "family" }}
+        value={diyQuoteFont.family}
+        onChange={handleFont}
+      >
         {fonts.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
@@ -119,8 +133,14 @@ export default function TextControl() {
       {/* <Button variant="outlined" onClick={toggleTextColor}>
         Change Quote Color
       </Button> */}
-      <TextField select size="small" label="Color" 
-       inputProps={{name: "color" }}value={diyQuoteFont.color} onChange={handleFont}>
+      <TextField
+        select
+        size="small"
+        label="Color"
+        inputProps={{ name: "color" }}
+        value={diyQuoteFont.color}
+        onChange={handleFont}
+      >
         {colors.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}

@@ -19,7 +19,7 @@ const ContextProvider = props => {
   const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
 
   const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 250, left: 0 })
-  const [diyQuoteFont, setDiyQuoteFont] = useState({ family: "sans-serif", size: 16 })
+  const [diyQuoteFont, setDiyQuoteFont] = useState({ family: "sans-serif", size: 16, color: "black" })
 
   const addToFav = quote => {
     if (!favQuotes.some(ele => ele.id === quote.id)) {
