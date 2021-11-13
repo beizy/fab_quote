@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import "../styles/random.css"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
+// import Box from "@mui/material/Box"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
@@ -9,6 +10,7 @@ export default function Random() {
   const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag } =
     useContext(AppContext)
   const [pending, setPending] = useState(true)
+  const [searchInput, setSearchInput] = useState("")
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
@@ -60,6 +62,12 @@ export default function Random() {
     shuffleQuote(event.target.value)
   }
 
+  const handleSearch = event => {
+    event.preventDefault()
+    console.log("handle search fires")
+    console.log("search input", searchInput)
+  }
+
   return (
     !pending && (
       <section className="random-container">
@@ -109,7 +117,14 @@ export default function Random() {
             </MenuItem>
           ))}
         </TextField>
-        <TextField label="Search for background" type="search" />
+        <form onSubmit={handleSearch}>
+          <TextField
+            label="Search for background"
+            type="search"
+            value={searchInput}
+            onChange={event => setSearchInput(event.target.value)}
+          />
+        </form>
       </section>
     )
   )
