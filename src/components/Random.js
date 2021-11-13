@@ -52,12 +52,23 @@ export default function Random() {
   }
 
   const shuffleBg = () => {
-    getRandomBg().then(data =>
+    if (bgUrls.length === 0) {
+      console.log("random bg fires")
+      getRandomBg().then(data =>
+        setRandomQuote({
+          ...randomQuote,
+          bgUrl: data.urls.regular,
+        })
+      )
+    } else {
+      console.log("query bg fires")
+      console.log("bgurls", bgUrls)
+      let randomIndex = Math.floor(Math.random() * 10)
       setRandomQuote({
         ...randomQuote,
-        bgUrl: data.urls.regular,
+        bgUrl: bgUrls[randomIndex],
       })
-    )
+    }
   }
 
   const handleTag = event => {
@@ -67,16 +78,18 @@ export default function Random() {
 
   const handleSearch = event => {
     event.preventDefault()
-    let temp = searchInput.split(" ")
-    let searchTerm = temp.length > 1 ? temp.join("+") : temp
-    console.log("search term", searchTerm)
-    getBgByQuery(searchTerm)
-      .then(data => {
+    if (!searchInput) {
+      bgUrls = []
+      shuffleBg()
+    } else {
+      let temp = searchInput.split(" ")
+      let searchTerm = temp.length > 1 ? temp.join("+") : temp
+      console.log("search term", searchTerm)
+      getBgByQuery(searchTerm).then(data => {
         bgUrls = data.results.map(ele => ele.urls.regular)
-        // console.log("results", results)
-        console.log("bgurls", bgUrls)
+        shuffleBg()
       })
-      .then(data => console.log("second .then data", data))
+    }
   }
 
   return (
