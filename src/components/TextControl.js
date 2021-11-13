@@ -1,34 +1,11 @@
 import React, { useContext, useEffect } from "react"
-// import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-// import InputAdornment from "@mui/material/InputAdornment"
 import { AppContext } from "../context"
-// import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
 export default function TextControl() {
-  const {
-    randomQuote,
-    diyQuote,
-    setDiyQuote,
-    // quoteTag,
-    // setQuoteTag,
-    diyQuotePosition,
-    setDiyQuotePosition,
-    // toggleTextColor,
-    diyQuoteFont,
-    setDiyQuoteFont,
-  } = useContext(AppContext)
-
-  const quoteTags = [
-    { value: "famous-quotes", label: "famous quotes" },
-    { value: "friendship", label: "friendship" },
-    { value: "inspirational", label: "inspirational" },
-    { value: "life", label: "life" },
-    { value: "love", label: "love" },
-    { value: "technology", label: "technology" },
-    { value: "wisdom", label: "wisdom" },
-  ]
+  const { randomQuote, diyQuote, setDiyQuote, diyQuotePosition, setDiyQuotePosition, diyQuoteFont, setDiyQuoteFont } =
+    useContext(AppContext)
 
   const fonts = [
     { value: "Montserrat", label: "Montserrat" },
@@ -68,10 +45,6 @@ export default function TextControl() {
     setDiyQuote({ ...diyQuote, [event.target.name]: event.target.value })
   }
 
-  const handlePostion = event => {
-    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: parseInt(event.target.value) })
-  }
-
   const handleFont = event => {
     setDiyQuoteFont({ ...diyQuoteFont, [event.target.name]: event.target.value })
   }
@@ -109,30 +82,6 @@ export default function TextControl() {
         ))}
       </TextField>
 
-      {/* <TextField
-        label="Position from Top"
-        id="outlined-start-adornment"
-        // sx={{ m: 1, width: "25ch" }}
-        size="small"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">px</InputAdornment>,
-        }}
-        inputProps={{ name: "top" }}
-        onChange={handlePostion}
-      />
-      <TextField
-        label="Position from Left"
-        id="outlined-start-adornment"
-        size="small"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">px</InputAdornment>,
-        }}
-        inputProps={{ name: "left" }}
-        onChange={handlePostion}
-      /> */}
-      {/* <Button variant="outlined" onClick={toggleTextColor}>
-        Change Quote Color
-      </Button> */}
       <TextField
         select
         size="small"

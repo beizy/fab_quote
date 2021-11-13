@@ -46,7 +46,6 @@ export default function DiyPost() {
             ...diyQuotePosition,
             color: `${diyQuoteFont.color}`,
             fontFamily: `${diyQuoteFont.family}`,
-            fontStyle: "normal",
           }}
         >
           <h1 className="diy-quote-text">{diyQuote.text}</h1>
