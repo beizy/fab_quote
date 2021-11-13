@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 import InputAdornment from "@mui/material/InputAdornment"
 import { AppContext } from "../context"
-import { getQuoteByTag, getRandomQuote } from "./apiCalls"
+// import { getQuoteByTag, getRandomQuote } from "./apiCalls"
 
 export default function TextControl() {
   const {
@@ -61,15 +61,15 @@ export default function TextControl() {
   }
 
   const handleBtn = () => {
-    if (quoteTag !== "any category") {
-      getQuoteByTag(quoteTag).then(data => {
-        setDiyQuote({ author: data.author, text: data.content })
-      })
-    } else {
-      getRandomQuote().then(data => {
-        setDiyQuote({ author: data.author, text: data.content })
-      })
-    }
+    // if (quoteTag !== "any category") {
+    //   getQuoteByTag(quoteTag).then(data => {
+    //     setDiyQuote({ author: data.author, text: data.content })
+    //   })
+    // } else {
+    //   getRandomQuote().then(data => {
+    //     setDiyQuote({ author: data.author, text: data.content })
+    //   })
+    // }
   }
 
   const handlePostion = event => {
@@ -98,14 +98,14 @@ export default function TextControl() {
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleDiyQuote}
       />
-      <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
+      {/* <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
         {quoteTags.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
         ))}
         <MenuItem value="any category">any category</MenuItem>
-      </TextField>
+      </TextField> */}
       <Button variant="outlined" onClick={handleBtn}>
         Get A New Quote on Chosen Category
       </Button>

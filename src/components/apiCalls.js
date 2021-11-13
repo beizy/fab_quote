@@ -1,8 +1,8 @@
 // get random quote
-const getRandomQuote = () => {
-  return fetch("http://api.quotable.io/random?maxLength=140").then(response => response.json())
-  // .then(data => console.log("random quote", data))
-}
+// const getRandomQuote = () => {
+//   return fetch("http://api.quotable.io/random?maxLength=140").then(response => response.json())
+//   // .then(data => console.log("random quote", data))
+// }
 
 // get random background image
 // const getQueryBg = () => {
@@ -22,8 +22,12 @@ const getRandomBg = () => {
   // .then(data => console.log("unsplash random", data))
 }
 
-const getQuoteByTag = tag => {
-  return fetch(`http://api.quotable.io/random?maxLength=140&tags=${tag}`).then(response => response.json())
+const getRandomQuote = tag => {
+  if (!tag) {
+    return fetch("http://api.quotable.io/random?maxLength=140").then(response => response.json())
+  } else {
+    return fetch(`http://api.quotable.io/random?maxLength=140&tags=${tag}`).then(response => response.json())
+  }
 }
 
-export { getRandomQuote, getRandomBg, getQuoteByTag }
+export { getRandomQuote, getRandomBg }

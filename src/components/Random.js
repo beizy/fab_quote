@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef, useContext } from "react"
 import "../styles/random.css"
-// import TextField from "@mui/material/TextField"
-// import MenuItem from "@mui/material/MenuItem"
+import TextField from "@mui/material/TextField"
+import MenuItem from "@mui/material/MenuItem"
 import { getRandomQuote, getRandomBg } from "./apiCalls"
 import { AppContext } from "../context"
 
 export default function Random() {
-  const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor } = useContext(AppContext)
+  const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag } =
+    useContext(AppContext)
   const [pending, setPending] = useState(true)
-
-  // const [textColor, setTextColor] = useState("black")
-
-  const qContainerRef = useRef(null)
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
@@ -26,8 +23,22 @@ export default function Random() {
     })
   }, [])
 
+  const quoteTags = [
+    { value: "famous-quotes", label: "famous quotes" },
+    { value: "friendship", label: "friendship" },
+    { value: "inspirational", label: "inspirational" },
+    { value: "life", label: "life" },
+    { value: "love", label: "love" },
+    { value: "technology", label: "technology" },
+    { value: "wisdom", label: "wisdom" },
+  ]
+  const handleTag = event => {
+    setQuoteTag(event.target.value)
+    shuffleQuote()
+  }
+
   const shuffleQuote = () => {
-    getRandomQuote().then(data =>
+    getRandomQuote(quoteTag).then(data =>
       setRandomQuote({
         ...randomQuote,
         id: data._id,
@@ -47,26 +58,9 @@ export default function Random() {
     )
   }
 
-  // const toggleTextTheme = () => {
-  //   qContainerRef.current.style.color === "black" ? setTextColor("white") : setTextColor("black")
-  // }
-
   return (
     !pending && (
       <section className="random-container">
-        <div
-          className="post"
-          style={{
-            backgroundImage: `url(${randomQuote.bgUrl})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="quote-container" style={{ color: `${textColor}` }}>
-            <h1 className="quote-text">{randomQuote.quoteText}</h1>
-            <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
-          </div>
-        </div>
         <div className="button-holder">
           <button onClick={shuffleQuote}>New Random Quote</button>
           <button onClick={shuffleBg}>New Random Image</button>
@@ -89,6 +83,28 @@ export default function Random() {
             </button>
           )}
         </div>
+        <div
+          className="post"
+          style={{
+            backgroundImage: `url(${randomQuote.bgUrl})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="quote-container" style={{ color: `${textColor}` }}>
+            <h1 className="quote-text">{randomQuote.quoteText}</h1>
+            <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
+          </div>
+        </div>
+
+        <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
+          <MenuItem key="blank-category" value="" />
+          {quoteTags.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </section>
     )
   )
