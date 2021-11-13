@@ -1,10 +1,11 @@
+/* whole container*/
 .diy-container {
   display: grid;
   grid-template-columns: 1fr 650px 1fr;
-  /* grid-template-rows: 1fr; */
   height: 100%;
 }
 
+/* three sections */
 .text-control-holder {
   border: 1px solid cyan;
   display: flex;
@@ -16,8 +17,14 @@
 
 .diy-post-holder {
   border: 1px solid darkgreen;
+  position: relative;
 }
 
+.position-control-holder {
+  border: 1px solid darkmagenta;
+}
+
+/* post section */
 .diy-post {
   box-sizing: content-box;
   width: 600px;
@@ -25,6 +32,10 @@
   position: relative;
 }
 
-.image-control-holder {
-  border: 1px solid darkmagenta;
+.diy-quote-container {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
 }

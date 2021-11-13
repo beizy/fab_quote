@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { AppContext } from "../context"
 import WebFont from "webfontloader"
-import { fontStyle } from "@mui/system"
 
 export default function DiyPost() {
-  const { randomQuote, diyQuote, diyQuotePosition, textColor, diyQuoteFont } = useContext(AppContext)
+  const { randomQuote, diyQuote, diyQuotePosition, diyQuoteFont } = useContext(AppContext)
 
   useEffect(() => {
     WebFont.load({
@@ -46,6 +45,9 @@ export default function DiyPost() {
             ...diyQuotePosition,
             color: `${diyQuoteFont.color}`,
             fontFamily: `${diyQuoteFont.family}`,
+            // width: "225px",
+            // top: "100px",
+            // left: "200px",
           }}
         >
           <h1 className="diy-quote-text">{diyQuote.text}</h1>
