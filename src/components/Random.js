@@ -11,7 +11,7 @@ export default function Random() {
     useContext(AppContext)
   const [pending, setPending] = useState(true)
   const [searchInput, setSearchInput] = useState("")
-  // const [bgUrls, setBgUrls] = useState([])
+  const [bgUrls, setBgUrls] = useState([])
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
@@ -36,8 +36,6 @@ export default function Random() {
     { value: "wisdom", label: "wisdom" },
   ]
 
-  let bgUrls = []
-
   const shuffleQuote = tag => {
     getRandomQuote(tag).then(data => {
       console.log(data)
@@ -53,7 +51,6 @@ export default function Random() {
 
   const shuffleBg = () => {
     if (bgUrls.length === 0) {
-      console.log("random bg fires")
       getRandomBg().then(data =>
         setRandomQuote({
           ...randomQuote,
@@ -61,9 +58,7 @@ export default function Random() {
         })
       )
     } else {
-      console.log("query bg fires")
-      console.log("bgurls", bgUrls)
-      let randomIndex = Math.floor(Math.random() * 10)
+      let randomIndex = Math.floor(Math.random() * 25)
       setRandomQuote({
         ...randomQuote,
         bgUrl: bgUrls[randomIndex],
@@ -79,15 +74,24 @@ export default function Random() {
   const handleSearch = event => {
     event.preventDefault()
     if (!searchInput) {
-      bgUrls = []
-      shuffleBg()
+      getRandomBg().then(data =>
+        setRandomQuote({
+          ...randomQuote,
+          bgUrl: data.urls.regular,
+        })
+      )
+      setBgUrls([])
     } else {
       let temp = searchInput.split(" ")
       let searchTerm = temp.length > 1 ? temp.join("+") : temp
-      console.log("search term", searchTerm)
       getBgByQuery(searchTerm).then(data => {
-        bgUrls = data.results.map(ele => ele.urls.regular)
-        shuffleBg()
+        let extracted = data.results.map(ele => ele.urls.regular)
+        let randomIndex = Math.floor(Math.random() * 25)
+        setRandomQuote({
+          ...randomQuote,
+          bgUrl: extracted[randomIndex],
+        })
+        setBgUrls(extracted)
       })
     }
   }

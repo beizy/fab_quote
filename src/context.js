@@ -14,6 +14,7 @@ const ContextProvider = props => {
   const [quoteTag, setQuoteTag] = useState("")
   const [favQuotes, setFavQuotes] = useState([])
   const [textColor, setTextColor] = useState("black")
+  // const [queryBgUrls, setQueryBgUrls] = useState([])
 
   const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
 
