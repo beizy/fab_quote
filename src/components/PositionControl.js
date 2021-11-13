@@ -11,6 +11,11 @@ export default function PositionControl() {
     setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: `${event.target.value}px` })
   }
 
+  const centerH = () => {
+    let calculatedLeft = (600 - parseInt(diyQuotePosition.width)) / 2
+    setDiyQuotePosition({ ...diyQuotePosition, left: `${calculatedLeft}px` })
+  }
+
   return (
     <div className="position-control-holder">
       <TextField
@@ -28,6 +33,7 @@ export default function PositionControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
+        value={diyQuotePosition.top}
         inputProps={{ name: "top" }}
         onChange={handlePostion}
       />
@@ -37,10 +43,13 @@ export default function PositionControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
+        value={diyQuotePosition.left}
         inputProps={{ name: "left" }}
         onChange={handlePostion}
       />
-      <Button variant="outlined">Center Horizontally</Button>
+      <Button variant="outlined" onClick={centerH}>
+        Center Horizontally
+      </Button>
       <Button variant="outlined">Center Vertically</Button>
     </div>
   )

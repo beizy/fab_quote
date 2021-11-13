@@ -1,11 +1,10 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 import { AppContext } from "../context"
 
 export default function TextControl() {
-  const { randomQuote, diyQuote, setDiyQuote, diyQuotePosition, setDiyQuotePosition, diyQuoteFont, setDiyQuoteFont } =
-    useContext(AppContext)
+  const { diyQuote, setDiyQuote, diyQuoteFont, setDiyQuoteFont } = useContext(AppContext)
 
   const fonts = [
     { value: "Montserrat", label: "Montserrat" },
@@ -36,10 +35,6 @@ export default function TextControl() {
     { value: "#E5E1E6", label: "Platinum" },
     { value: "#FFFFED", label: "Pale Yellow" },
   ]
-
-  useEffect(() => {
-    setDiyQuote({ author: randomQuote.quoteAuthor, text: randomQuote.quoteText })
-  }, [])
 
   const handleText = event => {
     setDiyQuote({ ...diyQuote, [event.target.name]: event.target.value })

@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { AppContext } from "../context"
 import WebFont from "webfontloader"
 
 export default function DiyPost() {
-  const { randomQuote, diyQuote, diyQuotePosition, diyQuoteFont } = useContext(AppContext)
+  const { randomQuote, diyQuote, diyQuotePosition, setDiyQuotePosition, diyQuoteFont } = useContext(AppContext)
+
+  const quoteContainerRef = useRef(null)
 
   useEffect(() => {
     WebFont.load({
@@ -29,6 +31,11 @@ export default function DiyPost() {
     })
   }, [])
 
+  useEffect(() => {
+    console.log("height", quoteContainerRef.current.clientHeight)
+    setDiyQuotePosition({ ...diyQuotePosition, height: `${quoteContainerRef.current.clientHeight}px` })
+  }, [])
+
   return (
     <div className="diy-post-holder">
       <div
@@ -49,6 +56,7 @@ export default function DiyPost() {
             // top: "100px",
             // left: "200px",
           }}
+          ref={quoteContainerRef}
         >
           <h1 className="diy-quote-text">{diyQuote.text}</h1>
           <h4 className="diy-quote-author">{diyQuote.author}</h4>
