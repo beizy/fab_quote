@@ -30,4 +30,11 @@ const getRandomQuote = tag => {
   }
 }
 
-export { getRandomQuote, getRandomBg }
+const getBgByQuery = searchTerm => {
+  return fetch(`https://api.unsplash.com/search/photos?query=${searchTerm}&orientation=landscape`, {
+    method: "GET",
+    headers: { Authorization: "Client-ID fFcbD9xA7ZDP9InTsckH5Vr23ilFp2m2AzwpepKXNG4" },
+  }).then(response => response.json())
+}
+
+export { getRandomQuote, getRandomBg, getBgByQuery }

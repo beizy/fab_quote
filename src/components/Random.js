@@ -100,13 +100,16 @@ export default function Random() {
         </div>
 
         <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
-          <MenuItem key="blank-category" value="" />
+          <MenuItem key="blank-category" value="">
+            Any category
+          </MenuItem>
           {quoteTags.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
+        <TextField label="Search for background" type="search" />
       </section>
     )
   )
