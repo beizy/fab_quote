@@ -3,8 +3,7 @@ import { AppContext } from "../context"
 import WebFont from "webfontloader"
 
 export default function DiyPost() {
-  const { randomQuote, diyQuote, diyQuotePosition, setDiyQuotePosition, diyQuoteFont, divSize, setDivSize } =
-    useContext(AppContext)
+  const { randomQuote, diyQuote, diyQuotePosition, diyQuoteFont } = useContext(AppContext)
 
   const quoteContainerRef = useRef(null)
 
@@ -32,11 +31,11 @@ export default function DiyPost() {
     })
   }, [])
 
-  useEffect(() => {
-    console.log("height", quoteContainerRef.current.clientHeight)
-    console.log("width", quoteContainerRef.current.clientWidth)
-    // setDivHeight(quoteContainerRef.current.clientHeight)
-  }, [])
+  // useEffect(() => {
+  //   console.log("height", quoteContainerRef.current.clientHeight)
+  //   console.log("width", quoteContainerRef.current.clientWidth)
+  //   setDivHeight(quoteContainerRef.current.clientHeight)
+  // }, [])
 
   return (
     <div className="diy-post-holder">
@@ -53,11 +52,6 @@ export default function DiyPost() {
           style={{
             ...diyQuotePosition,
             ...diyQuoteFont,
-            // color: `${diyQuoteFont.color}`,
-            // fontFamily: `${diyQuoteFont.family}`,
-            // width: "225px",
-            // top: "100px",
-            // left: "200px",
           }}
           ref={quoteContainerRef}
         >

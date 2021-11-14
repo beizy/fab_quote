@@ -18,6 +18,15 @@ export default function PositionControl() {
     setDiyQuotePosition({ ...diyQuotePosition, top: "50%", transform: "translateY(-50%)" })
   }
 
+  const center = () => {
+    setDiyQuotePosition({
+      ...diyQuotePosition,
+      left: "50%",
+      top: "50%",
+      transform: "translateX(-50%) translateY(-50%)",
+    })
+  }
+
   return (
     <div className="position-control-holder">
       <TextField
@@ -55,6 +64,10 @@ export default function PositionControl() {
       <Button variant="outlined" onClick={centerV}>
         Center Vertically
       </Button>
+      <Button variant="outlined" onClick={center}>
+        Center Absolute
+      </Button>
+      <p>Two positon inputs and center buttons will override each other.</p>
     </div>
   )
 }
