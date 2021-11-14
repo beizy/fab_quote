@@ -14,13 +14,14 @@ const ContextProvider = props => {
   const [quoteTag, setQuoteTag] = useState("")
   const [favQuotes, setFavQuotes] = useState([])
   const [textColor, setTextColor] = useState("black")
-  // const [queryBgUrls, setQueryBgUrls] = useState([])
 
-  const [diyQuote, setDiyQuote] = useState({ author: "", text: "" })
+  const [diyQuote, setDiyQuote] = useState({})
 
   const [diyQuotePosition, setDiyQuotePosition] = useState({})
 
-  const [diyQuoteFont, setDiyQuoteFont] = useState({ family: "sans-serif", color: "black" })
+  const [diyQuoteFont, setDiyQuoteFont] = useState({})
+
+  const [divSize, setDivSize] = useState({})
 
   const addToFav = quote => {
     if (!favQuotes.some(ele => ele.id === quote.id)) {
@@ -54,6 +55,8 @@ const ContextProvider = props => {
         toggleTextColor,
         diyQuoteFont,
         setDiyQuoteFont,
+        divSize,
+        setDivSize,
       }}
     >
       {props.children}

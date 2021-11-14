@@ -66,7 +66,7 @@ export default function TextControl() {
         select
         size="small"
         label="Font"
-        inputProps={{ name: "family" }}
+        inputProps={{ name: "fontFamily" }}
         value={diyQuoteFont.family}
         onChange={handleFont}
       >
