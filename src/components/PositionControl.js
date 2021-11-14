@@ -8,12 +8,14 @@ export default function PositionControl() {
   const { diyQuotePosition, setDiyQuotePosition } = useContext(AppContext)
 
   const handlePostion = event => {
-    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: `${event.target.value}px` })
+    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: `${event.target.value}px`, transform: undefined })
   }
 
   const centerH = () => {
-    let calculatedLeft = (600 - parseInt(diyQuotePosition.width)) / 2
-    setDiyQuotePosition({ ...diyQuotePosition, left: `${calculatedLeft}px` })
+    setDiyQuotePosition({ ...diyQuotePosition, left: "50%", transform: "translateX(-50%)" })
+  }
+  const centerV = () => {
+    setDiyQuotePosition({ ...diyQuotePosition, top: "50%", transform: "translateY(-50%)" })
   }
 
   return (
@@ -50,7 +52,9 @@ export default function PositionControl() {
       <Button variant="outlined" onClick={centerH}>
         Center Horizontally
       </Button>
-      <Button variant="outlined">Center Vertically</Button>
+      <Button variant="outlined" onClick={centerV}>
+        Center Vertically
+      </Button>
     </div>
   )
 }
