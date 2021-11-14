@@ -21,4 +21,10 @@ const getBgByQuery = searchTerm => {
   }).then(response => response.json())
 }
 
-export { getRandomQuote, getRandomBg, getBgByQuery }
+const createImage = (bgUrl, qText, qAuthor, fontFamily, color, textTop, textLeft, authorTop, authorLeft) => {
+  return fetch(
+    `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.fontFamily=${fontFamily}&a.color=${color}&a.originX=left&a.originY=top&a.top=${textTop}&a.left=${textLeft}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=32&b.fontFamily=${fontFamily}&b.color=${color}&b.originX=left&b.originY=top&b.top=${authorTop}&b.left=${authorLeft}`
+  )
+}
+
+export { getRandomQuote, getRandomBg, getBgByQuery, createImage }
