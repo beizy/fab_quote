@@ -1,12 +1,14 @@
+/* whole container*/
 .diy-container {
   display: grid;
   grid-template-columns: 1fr 650px 1fr;
-  /* grid-template-rows: 1fr; */
   height: 100%;
 }
 
-.text-control-holder {
-  border: 1px solid cyan;
+/* three sections */
+.text-control-holder,
+.position-control-holder {
+  /* border: 1px solid cyan; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,10 +16,33 @@
   padding: 20px 5px;
 }
 
-.post-holder {
+.diy-post-holder {
   border: 1px solid darkgreen;
+  position: relative;
 }
 
-.image-control-holder {
-  border: 1px solid darkmagenta;
+.position-control-holder {
+  /* border: 1px solid darkmagenta; */
+}
+
+/* post section */
+.diy-post {
+  box-sizing: content-box;
+  width: 600px;
+  height: 400px;
+  position: relative;
+  border: 1px red solid;
+  margin: 0 auto;
+}
+
+.diy-quote-container {
+  position: absolute;
+  text-align: center;
+  max-width: 100%;
+  border: 1px black solid;
+}
+.diy-quote-text {
+  max-width: 100%;
+  border: 1px solid blue;
+  word-wrap: break-word;
 }
