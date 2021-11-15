@@ -83,4 +83,17 @@ describe("homepage", () => {
     cy.get(".fav-link").click()
     cy.get(".card-container").children().should("have.length", "1")
   })
+
+  it("User should see a delete button in every quote in favorite page", () => {
+    cy.get(".button-holder").children().eq(3).click()
+    cy.get(".fav-link").click()
+    cy.get(".card-container").first().find("button")
+  })
+
+  it("When User clicks Delete button, it should delete the quote from favorites", () => {
+    cy.get(".button-holder").children().eq(3).click()
+    cy.get(".fav-link").click()
+    cy.get(".card-container").first().find("button").click()
+    cy.get(".card-container").children().should("have.length", "0")
+  })
 })
