@@ -70,30 +70,16 @@ describe("homepage", () => {
     cy.get(".button-holder").children().eq(3).should("be.visible")
   })
 
-  it("When User clicks 'Collect Quote Text'button, it should change to 'Added to Favorites", () => {
-    cy.get(".button-holder").children().eq(3).click().contains("Added to Favorites")
+  // Notes for below select test:
+  // I have no idea how to test MUI component with Cypress. Clearly the "select menu" is not a select element so I cannot call .select method on it.
+
+  it("User should see a select menu to choose quote category", () => {
+    cy.get("#category-select").should("be.visible")
   })
 
-  it("When User clicks 'My Favorite Quotes' link, User should be directed to the favorite page", () => {
-    cy.get(".fav-link").click().url().should("eq", "http://localhost:3000/favorites")
-  })
-
-  it("User should see the collected quote in favorite page", () => {
-    cy.get(".button-holder").children().eq(3).click()
-    cy.get(".fav-link").click()
-    cy.get(".card-container").children().should("have.length", "1")
-  })
-
-  it("User should see a delete button in every quote in favorite page", () => {
-    cy.get(".button-holder").children().eq(3).click()
-    cy.get(".fav-link").click()
-    cy.get(".card-container").first().find("button")
-  })
-
-  it("When User clicks Delete button, it should delete the quote from favorites", () => {
-    cy.get(".button-holder").children().eq(3).click()
-    cy.get(".fav-link").click()
-    cy.get(".card-container").first().find("button").click()
-    cy.get(".card-container").children().should("have.length", "0")
+  it("User should see a search bar to type in keywords for background images", () => {
+    cy.get("form").first().should("be.visible")
+    cy.get("form").type("winter")
+    cy.get("form > div > div:nth-child(2) > input").should("have.value", "winter")
   })
 })
