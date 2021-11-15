@@ -8,21 +8,26 @@ import { AppContext } from "../context"
 export default function Random() {
   const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag } =
     useContext(AppContext)
-  const [pending, setPending] = useState(true)
+  // const [pending, setPending] = useState(true)
+  const [errorMsg, setErrorMsg] = useState("Still loading")
   const [searchInput, setSearchInput] = useState("")
   const [bgUrls, setBgUrls] = useState([])
 
   useEffect(() => {
-    Promise.all([getRandomQuote(), getRandomBg()]).then(resArray => {
-      setRandomQuote({
-        id: resArray[0]._id,
-        quoteText: resArray[0].content,
-        quoteAuthor: resArray[0].author,
-        bgUrl: resArray[1].urls.regular,
-        isFaved: false,
+    Promise.all([getRandomQuote(), getRandomBg()])
+      .then(resArray => {
+        setRandomQuote({
+          id: resArray[0]._id,
+          quoteText: resArray[0].content,
+          quoteAuthor: resArray[0].author,
+          bgUrl: resArray[1].urls.regular,
+          isFaved: false,
+        })
+        setErrorMsg("")
       })
-      setPending(false)
-    })
+      .catch(error => {
+        setErrorMsg(error)
+      })
   }, [])
 
   const quoteTags = [
@@ -95,73 +100,73 @@ export default function Random() {
     }
   }
 
-  return (
-    !pending && (
-      <section className="random-container">
-        <div className="button-holder">
-          <button onClick={() => shuffleQuote(quoteTag)}>New Random Quote</button>
-          <button onClick={shuffleBg}>New Random Image</button>
-          <button onClick={toggleTextColor}>Change Text Theme </button>
-
-          {randomQuote.isFaved ? (
-            <button>Added to Favorites</button>
-          ) : (
-            <button
-              onClick={e => {
-                e.preventDefault()
-                addToFav(randomQuote)
-                setRandomQuote({
-                  ...randomQuote,
-                  isFaved: true,
-                })
-              }}
-            >
-              Collect Quote Text
-            </button>
-          )}
-        </div>
-        <div
-          className="post"
-          style={{
-            backgroundImage: `url(${randomQuote.bgUrl})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="quote-container" style={{ color: `${textColor}` }}>
-            <h1 className="quote-text">{randomQuote.quoteText}</h1>
-            <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
-          </div>
-        </div>
-        <div className="query-container">
-          <TextField
-            id="category-select"
-            select
-            size="small"
-            label="Quote category"
-            value={quoteTag}
-            onChange={handleTag}
+  return errorMsg ? (
+    <h1>{errorMsg}</h1>
+  ) : (
+    <section className="random-container">
+      <div className="button-holder">
+        <button onClick={() => shuffleQuote(quoteTag)}>New Random Quote</button>
+        <button onClick={shuffleBg}>New Random Image</button>
+        <button onClick={toggleTextColor}>Change Text Theme </button>
+        //{" "}
+        {randomQuote.isFaved ? (
+          <button>Added to Favorites</button>
+        ) : (
+          <button
+            onClick={e => {
+              e.preventDefault()
+              addToFav(randomQuote)
+              setRandomQuote({
+                ...randomQuote,
+                isFaved: true,
+              })
+            }}
           >
-            <MenuItem key="blank-category" value="">
-              Any category
-            </MenuItem>
-            {quoteTags.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <form onSubmit={handleSearch}>
-            <TextField
-              size="small"
-              label="Search for background"
-              type="search"
-              value={searchInput}
-              onChange={event => setSearchInput(event.target.value)}
-            />
-          </form>
+            Collect Quote Text
+          </button>
+        )}
+      </div>
+      <div
+        className="post"
+        style={{
+          backgroundImage: `url(${randomQuote.bgUrl})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="quote-container" style={{ color: `${textColor}` }}>
+          <h1 className="quote-text">{randomQuote.quoteText}</h1>
+          <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
         </div>
-      </section>
-    )
+      </div>
+      <div className="query-container">
+        <TextField
+          id="category-select"
+          select
+          size="small"
+          label="Quote category"
+          value={quoteTag}
+          onChange={handleTag}
+        >
+          <MenuItem key="blank-category" value="">
+            Any category
+          </MenuItem>
+          {quoteTags.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <form onSubmit={handleSearch}>
+          <TextField
+            size="small"
+            label="Search for background"
+            type="search"
+            value={searchInput}
+            onChange={event => setSearchInput(event.target.value)}
+          />
+        </form>
+      </div>
+    </section>
   )
 }
