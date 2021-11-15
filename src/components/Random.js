@@ -2,13 +2,10 @@
 import React, { useState, useEffect, useContext } from "react"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-
 // apiCalls
 import { getRandomQuote, getRandomBg, getBgByQuery } from "./apiCalls"
-
 // styles
 import "../styles/random.css"
-
 // context
 import { AppContext } from "../context"
 
