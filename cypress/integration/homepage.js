@@ -65,4 +65,11 @@ describe("homepage", () => {
 
     cy.get(".quote-author").should("have.css", "color").and("eq", "rgb(255, 255, 255)")
   })
+
+  it("User should see a 'Collect Quote Text' button", () => {
+    cy.get(".button-holder").children().eq(3).should("be.visible")
+  })
+  it("When User clicks 'Collect Quote Text'button, it should change to 'Added to Favorites", () => {
+    cy.get(".button-holder").children().eq(3).click().contains("Added to Favorites")
+  })
 })
