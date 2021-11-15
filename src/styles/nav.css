@@ -1,0 +1,24 @@
+.logo-holder {
+  border: 1px solid black;
+  /* width: 200px;
+  height: 60px; */
+  background-image: url(../images/logo-cropped.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+/* .logo-text {
+  position: absolute;
+  left: 20px;
+  top: 8px;
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 800;
+  font-size: 20px;
+  color: #4f4b4e;
+} */
+
+.nav-links {
+  text-decoration: none;
+}
