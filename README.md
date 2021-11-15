@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Fab Quote
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Abstract
 
-## Available Scripts
+This app generates a random quote and background everytime users visit the homepage. It also allows users to further choose quote category and search for specific background. If a user likes the content, he/she can collect the quote to favorite list, and furthur cusimize the style of the quote(font family, color, positions). Users can also make their own quote!
 
-In the project directory, you can run:
+### Deployed Link
 
-### `npm start`
+Experience full functionalities of the app [here]()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Test instructions
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Cloned down this repo
+- Install Cypress in root folder
 
-### `npm test`
+```
+npm install cypress --save-dev
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+- Open Cypress console
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npx cypress open
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Click to run each test.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Screenshots
 
-### `npm run eject`
+### Technology
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Frameworks: React,create-react-app, react router
+- Languages: HTML, CSS, JSX, JavaScript
+- Testing: Cypress, chai
+- Other libraries: Material UI, webfontloader
+- Storage: localStorage
+- Deployment: Heroku
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Wins and Challenges
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Wins
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- App has rich functions for user to get desired content
+- App utilizes context to achieve simultaneous interaction between user-input and UI.
+- A touch of Material UI saves a lot styling efforts
 
-## Learn More
+#### Challenges
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- MUI complicates components structure to a hell level.
+- Last minute API fail. Bruzu has CORS issues so fetch calls from the app are all rejected. Making downloading image unreachable (for now)
+- Lack of design ideas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Future Additions
 
-### Code Splitting
+- Let user download their customized quote card
+- Better looking app design
+- Dry up context by introducing reducer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Developed by
 
-### Analyzing the Bundle Size
+Bei Zhang (owner of this repo)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Project Manager
 
-### Making a Progressive Web App
+[Kayla Gordon](https://github.com/kaylagordon)
+[Robbie Jaeger](https://github.com/robbiejaeger)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Project specs
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Showcase project](https://frontend.turing.edu/projects/module-3/showcase.html)
