@@ -28,10 +28,6 @@ describe("homepage", () => {
     cy.get(".quote-author").contains("Jim Rohn")
   })
 
-  it("Quote should be in default color black", () => {
-    cy.get(".quote-author").should("have.css", "color").and("eq", "rgb(0, 0, 0)")
-  })
-
   it("When User clicks 'New Random Quote' button, User should see a different quote", () => {
     cy.intercept("GET", "http://api.quotable.io/random?maxLength=140", { fixture: "randomQuote2.json" })
       .as("getNewRandomQuote")
@@ -60,7 +56,13 @@ describe("homepage", () => {
       )
   })
 
-  // it("As a user, I can click a movie, and see that movie’s details", () => {
-  //   cy.get("article").contains("Mulan").click().url().should("include", "337401")
-  // })
+  it("Quote should be in default color black", () => {
+    cy.get(".quote-author").should("have.css", "color").and("eq", "rgb(0, 0, 0)")
+  })
+
+  it("When User clicks 'Change Text Theme' button, quote text should be white", () => {
+    cy.get(".button-holder").children().eq(2).click()
+
+    cy.get(".quote-author").should("have.css", "color").and("eq", "rgb(255, 255, 255)")
+  })
 })
