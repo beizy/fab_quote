@@ -1,0 +1,30 @@
+.card-container {
+  border: 1px solid black;
+  padding: 10px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.fav-card {
+  margin-bottom: 10px;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: #faf9f6;
+  color: #4f4b4e;
+}
+
+.card-del-btn-holder > button {
+  border: none;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 5px;
+  width: 50px;
+  background-color: #54a8fe;
+}
+
+/* .card-del-btn-holder > button:hover {
+  background-color: #faf9f6;
+} */

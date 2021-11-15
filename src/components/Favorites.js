@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { AppContext } from "../context"
 import FavCard from "./FavCard"
+import "../styles/favorites.css"
 
 export default function Favorites() {
   const { favQuotes } = useContext(AppContext)
