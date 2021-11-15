@@ -47,13 +47,16 @@ export default function TextControl() {
   return (
     <div className="text-control-holder">
       <TextField
+        error={diyQuote.author === ""}
         label="Quote Author"
         size="small"
         inputProps={{ maxLength: 20, name: "author" }}
         value={diyQuote.author}
         onChange={handleText}
+        helperText={diyQuote.author === "" ? "Please enter quote author" : ""}
       />
       <TextField
+        error={diyQuote.text === ""}
         label="Quote Text"
         multiline
         maxRows={5}
@@ -61,6 +64,7 @@ export default function TextControl() {
         value={diyQuote.text}
         inputProps={{ maxLength: 140, name: "text" }}
         onChange={handleText}
+        helperText={diyQuote.text === "" ? "Please enter quote text" : ""}
       />
       <TextField
         select

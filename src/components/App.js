@@ -1,6 +1,4 @@
 import "../styles/app.css"
-// import { useState } from "react"
-
 import { Route, Link } from "react-router-dom"
 import Random from "./Random"
 import Favorites from "./Favorites"
@@ -11,7 +9,9 @@ function App() {
   return (
     <main className="app">
       <div className="nav">
-        <div className="logo">Fab Quote</div>
+        <Link to="/">
+          <div className="logo">Fab Quote</div>
+        </Link>
         <Link to="/favorites" className="fav-link">
           My Favorite Quotes
         </Link>
@@ -26,7 +26,6 @@ function App() {
           <Route path="/diy" exact component={Diy} />
         </div>
       </ContextProvider>
-      <footer>github.com/beizy/fab_quote</footer>
     </main>
   )
 }
