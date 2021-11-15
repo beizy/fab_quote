@@ -1,8 +1,15 @@
+// frameworks and libraries import
 import React, { useState, useEffect, useContext } from "react"
-import "../styles/random.css"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
+
+// apiCalls
 import { getRandomQuote, getRandomBg, getBgByQuery } from "./apiCalls"
+
+// styles
+import "../styles/random.css"
+
+// context
 import { AppContext } from "../context"
 
 export default function Random() {
@@ -27,10 +34,6 @@ export default function Random() {
       .catch(error => {
         setErrorMsg(error)
       })
-
-    let saved = JSON.parse(localStorage.getItem("myFavQuotes")) || []
-
-    setFavQuotes(saved)
   }, [])
 
   const quoteTags = [

@@ -44,7 +44,6 @@ export default function PositionControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
-        // value={diyQuotePosition.top}
         inputProps={{ name: "top" }}
         onChange={handlePostion}
       />
@@ -54,7 +53,6 @@ export default function PositionControl() {
         InputProps={{
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
-        // value={diyQuotePosition.left}
         inputProps={{ name: "left" }}
         onChange={handlePostion}
       />

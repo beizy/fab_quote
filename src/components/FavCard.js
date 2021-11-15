@@ -10,7 +10,7 @@ export default function FavCard(props) {
         <p>Quote: {props.quoteText}</p>
         <p>Author: {props.quoteAuthor}</p>
       </div>
-      <div className="button-holder">
+      <div className="card-del-btn-holder">
         <button
           onClick={e => {
             e.preventDefault()
