@@ -21,8 +21,6 @@ const ContextProvider = props => {
 
   const [diyQuoteFont, setDiyQuoteFont] = useState({})
 
-  const [divSize, setDivSize] = useState({})
-
   const addToFav = quote => {
     if (!favQuotes.some(ele => ele.id === quote.id)) {
       setFavQuotes([...favQuotes, quote])
@@ -55,8 +53,6 @@ const ContextProvider = props => {
         toggleTextColor,
         diyQuoteFont,
         setDiyQuoteFont,
-        divSize,
-        setDivSize,
       }}
     >
       {props.children}

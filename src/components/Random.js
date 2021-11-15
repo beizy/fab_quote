@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react"
 import "../styles/random.css"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-// import Box from "@mui/material/Box"
 import { getRandomQuote, getRandomBg, getBgByQuery } from "./apiCalls"
 import { AppContext } from "../context"
 
@@ -77,7 +76,7 @@ export default function Random() {
       getRandomBg().then(data =>
         setRandomQuote({
           ...randomQuote,
-          bgUrl: data.urls.regular,
+          bgUrl: data.urls.small,
         })
       )
       setBgUrls([])
@@ -134,25 +133,34 @@ export default function Random() {
             <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
           </div>
         </div>
-
-        <TextField select size="small" label="Quote category" value={quoteTag} onChange={handleTag}>
-          <MenuItem key="blank-category" value="">
-            Any category
-          </MenuItem>
-          {quoteTags.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <form onSubmit={handleSearch}>
+        <div className="query-container">
           <TextField
-            label="Search for background"
-            type="search"
-            value={searchInput}
-            onChange={event => setSearchInput(event.target.value)}
-          />
-        </form>
+            id="category-select"
+            select
+            size="small"
+            label="Quote category"
+            value={quoteTag}
+            onChange={handleTag}
+          >
+            <MenuItem key="blank-category" value="">
+              Any category
+            </MenuItem>
+            {quoteTags.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <form onSubmit={handleSearch}>
+            <TextField
+              size="small"
+              label="Search for background"
+              type="search"
+              value={searchInput}
+              onChange={event => setSearchInput(event.target.value)}
+            />
+          </form>
+        </div>
       </section>
     )
   )

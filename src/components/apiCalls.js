@@ -21,10 +21,16 @@ const getBgByQuery = searchTerm => {
   }).then(response => response.json())
 }
 
-const createImage = (bgUrl, qText, qAuthor, fontFamily, color, textTop, textLeft, authorTop, authorLeft) => {
+// const diyQuoteDownload = (bgUrl, qText, qAuthor, fontFamily, color, textTop, textLeft, authorTop, authorLeft) => {
+//   return fetch(
+//     `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.fontFamily=${fontFamily}&a.color=${color}&a.originX=left&a.originY=top&a.top=${textTop}&a.left=${textLeft}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.fontFamily=${fontFamily}&b.color=${color}&b.originX=left&b.originY=top&b.top=${authorTop}&b.left=${authorLeft}`
+//   )
+// }
+
+const randomQuoteDownload = (bgUrl, qText, qAuthor, color, qAuthorTop) => {
   return fetch(
-    `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.fontFamily=${fontFamily}&a.color=${color}&a.originX=left&a.originY=top&a.top=${textTop}&a.left=${textLeft}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=32&b.fontFamily=${fontFamily}&b.color=${color}&b.originX=left&b.originY=top&b.top=${authorTop}&b.left=${authorLeft}`
+    `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.color=${color}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.color=${color}&b.top=${qAuthorTop}`
   )
 }
 
-export { getRandomQuote, getRandomBg, getBgByQuery, createImage }
+export { getRandomQuote, getRandomBg, getBgByQuery, randomQuoteDownload }

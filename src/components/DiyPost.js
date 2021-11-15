@@ -5,8 +5,6 @@ import WebFont from "webfontloader"
 export default function DiyPost() {
   const { randomQuote, diyQuote, diyQuotePosition, diyQuoteFont } = useContext(AppContext)
 
-  const quoteContainerRef = useRef(null)
-
   useEffect(() => {
     WebFont.load({
       google: {
@@ -31,12 +29,6 @@ export default function DiyPost() {
     })
   }, [])
 
-  // useEffect(() => {
-  //   console.log("height", quoteContainerRef.current.clientHeight)
-  //   console.log("width", quoteContainerRef.current.clientWidth)
-  //   setDivHeight(quoteContainerRef.current.clientHeight)
-  // }, [])
-
   return (
     <div className="diy-post-holder">
       <div
@@ -53,7 +45,6 @@ export default function DiyPost() {
             ...diyQuotePosition,
             ...diyQuoteFont,
           }}
-          ref={quoteContainerRef}
         >
           <h1 className="diy-quote-text">{diyQuote.text}</h1>
           <h4 className="diy-quote-author">{diyQuote.author}</h4>
