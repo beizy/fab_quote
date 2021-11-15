@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 const AppContext = createContext({})
 
@@ -8,11 +8,16 @@ const ContextProvider = props => {
     quoteAuthor: "Wise Man",
     quoteText: "No quote yet! ",
     bgUrl: "",
-    pending: true,
     isFaved: false,
   })
+
   const [quoteTag, setQuoteTag] = useState("")
-  const [favQuotes, setFavQuotes] = useState([])
+
+  const [favQuotes, setFavQuotes] = useState(() => {
+    const saved = localStorage.getItem("myFavQuotes")
+    return saved ? JSON.parse(saved) : []
+  })
+
   const [textColor, setTextColor] = useState("black")
 
   const [diyQuote, setDiyQuote] = useState({})
@@ -34,6 +39,11 @@ const ContextProvider = props => {
   const toggleTextColor = () => {
     textColor === "black" ? setTextColor("white") : setTextColor("black")
   }
+
+  useEffect(() => {
+    localStorage.setItem("myFavQuotes", JSON.stringify(favQuotes))
+  }, [favQuotes])
+
   return (
     <AppContext.Provider
       value={{

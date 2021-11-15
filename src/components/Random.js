@@ -6,9 +6,8 @@ import { getRandomQuote, getRandomBg, getBgByQuery } from "./apiCalls"
 import { AppContext } from "../context"
 
 export default function Random() {
-  const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag } =
+  const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag, setFavQuotes } =
     useContext(AppContext)
-  // const [pending, setPending] = useState(true)
   const [errorMsg, setErrorMsg] = useState("Still loading")
   const [searchInput, setSearchInput] = useState("")
   const [bgUrls, setBgUrls] = useState([])
@@ -28,6 +27,10 @@ export default function Random() {
       .catch(error => {
         setErrorMsg(error)
       })
+
+    let saved = JSON.parse(localStorage.getItem("myFavQuotes")) || []
+
+    setFavQuotes(saved)
   }, [])
 
   const quoteTags = [
@@ -42,7 +45,6 @@ export default function Random() {
 
   const shuffleQuote = tag => {
     getRandomQuote(tag).then(data => {
-      console.log(data)
       setRandomQuote({
         ...randomQuote,
         id: data._id,
@@ -101,9 +103,6 @@ export default function Random() {
   }
 
   return (
-    //  errorMsg ? (
-    //   <h1>{errorMsg}</h1>
-    // ) : (
     <section className="random-container">
       <div className="button-holder">
         <button onClick={() => shuffleQuote(quoteTag)}>New Random Quote</button>
@@ -116,11 +115,11 @@ export default function Random() {
           <button
             onClick={e => {
               e.preventDefault()
-              addToFav(randomQuote)
               setRandomQuote({
                 ...randomQuote,
                 isFaved: true,
               })
+              addToFav(randomQuote)
             }}
           >
             Collect Quote Text
