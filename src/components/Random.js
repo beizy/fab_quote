@@ -104,7 +104,7 @@ export default function Random() {
           <button onClick={toggleTextColor}>Change Text Theme </button>
 
           {randomQuote.isFaved ? (
-            <button>❤️ Added to Favorites</button>
+            <button>Added to Favorites</button>
           ) : (
             <button
               onClick={e => {
