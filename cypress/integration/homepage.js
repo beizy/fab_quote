@@ -69,7 +69,18 @@ describe("homepage", () => {
   it("User should see a 'Collect Quote Text' button", () => {
     cy.get(".button-holder").children().eq(3).should("be.visible")
   })
+
   it("When User clicks 'Collect Quote Text'button, it should change to 'Added to Favorites", () => {
     cy.get(".button-holder").children().eq(3).click().contains("Added to Favorites")
+  })
+
+  it("When User clicks 'My Favorite Quotes' link, User should be directed to the favorite page", () => {
+    cy.get(".fav-link").click().url().should("eq", "http://localhost:3000/favorites")
+  })
+
+  it("User should see the collected quote in favorite page", () => {
+    cy.get(".button-holder").children().eq(3).click()
+    cy.get(".fav-link").click()
+    cy.get(".card-container").children().should("have.length", "1")
   })
 })

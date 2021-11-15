@@ -19,7 +19,6 @@ export default function FavCard(props) {
         >
           Delete
         </button>
-        <button>DIY</button>
       </div>
     </div>
   )
