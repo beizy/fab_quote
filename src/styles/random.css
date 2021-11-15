@@ -1,9 +1,13 @@
 .random-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  width: 800px;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-radius: 25px;
+  background-color: #f2e9d8;
 }
 
 .post {
@@ -11,6 +15,7 @@
   width: 600px;
   height: 400px;
   position: relative;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .quote-container {
@@ -28,9 +33,9 @@
 .quote-author {
   margin-top: 10px;
 }
+
 .query-container {
   width: 600px;
-  border: 1px solid blue;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,4 +43,21 @@
 
 #category-select {
   width: 158px;
+}
+
+.button-holder {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-holder > button {
+  border: 1px solid #bab3a6;
+  /* outline: none; */
+  color: #6f6b63;
+  padding: 4px 8px;
+  border-radius: 5px;
+  width: 100px;
+  background-color: transparent;
 }
