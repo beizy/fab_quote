@@ -1,5 +1,5 @@
 import React from "react"
-import { Route, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "../styles/nav.css"
 import logoImg from "../images/cropped-resize.png"
 import FavoriteIcon from "@mui/icons-material/Favorite"

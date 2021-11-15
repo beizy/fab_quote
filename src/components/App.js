@@ -1,5 +1,5 @@
 import "../styles/app.css"
-import { Route, Link } from "react-router-dom"
+import { Route } from "react-router-dom"
 import Random from "./Random"
 import Favorites from "./Favorites"
 import Diy from "./Diy"
