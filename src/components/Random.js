@@ -100,15 +100,16 @@ export default function Random() {
     }
   }
 
-  return errorMsg ? (
-    <h1>{errorMsg}</h1>
-  ) : (
+  return (
+    //  errorMsg ? (
+    //   <h1>{errorMsg}</h1>
+    // ) : (
     <section className="random-container">
       <div className="button-holder">
         <button onClick={() => shuffleQuote(quoteTag)}>New Random Quote</button>
         <button onClick={shuffleBg}>New Random Image</button>
         <button onClick={toggleTextColor}>Change Text Theme </button>
-        //{" "}
+
         {randomQuote.isFaved ? (
           <button>Added to Favorites</button>
         ) : (
@@ -126,19 +127,24 @@ export default function Random() {
           </button>
         )}
       </div>
-      <div
-        className="post"
-        style={{
-          backgroundImage: `url(${randomQuote.bgUrl})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="quote-container" style={{ color: `${textColor}` }}>
-          <h1 className="quote-text">{randomQuote.quoteText}</h1>
-          <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
+
+      {errorMsg ? (
+        <h1 className="error-message">{errorMsg}</h1>
+      ) : (
+        <div
+          className="post"
+          style={{
+            backgroundImage: `url(${randomQuote.bgUrl})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="quote-container" style={{ color: `${textColor}` }}>
+            <h1 className="quote-text">{randomQuote.quoteText}</h1>
+            <h4 className="quote-author">{randomQuote.quoteAuthor}</h4>
+          </div>
         </div>
-      </div>
+      )}
       <div className="query-container">
         <TextField
           id="category-select"

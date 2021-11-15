@@ -1,0 +1,5 @@
+{
+  "body": { "a": "something" },
+  "status": 404,
+  "ok": false
+}
