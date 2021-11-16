@@ -6,10 +6,10 @@ This app generates a random quote and background everytime users visit the homep
 
 ### Deployed Link
 
+Deployment hasn't been successuful when you see this message
 Experience full functionalities of the app [here]()
 
 ### Test instructions
-
 - Cloned down this repo
 - Install Cypress in root folder
 
@@ -18,15 +18,23 @@ npm install cypress --save-dev
 
 ```
 
-- Open Cypress console
+- CD into project root folder, start the project and Open Cypress console
 
 ```
+npm start
 npx cypress open
 ```
 
 - Click to run each test.
 
 ### Screenshots
+![Landing page](https://user-images.githubusercontent.com/73845209/141873777-0f91a5f1-1857-405f-b351-3beb8dda4f0c.png)
+![Favorite list](https://user-images.githubusercontent.com/73845209/141873959-5e5ae328-3f33-4cbe-b43d-14e3413a9e6f.png)
+
+![Make your own page](https://user-images.githubusercontent.com/73845209/141874191-5183bbd0-1a4e-493b-a360-9c9bafd3daa9.png)
+
+
+
 
 ### Technology
 
