@@ -32,6 +32,7 @@ describe("homepage", () => {
     cy.intercept("GET", "http://api.quotable.io/random?maxLength=140", { fixture: "randomQuote2.json" })
       .as("getNewRandomQuote")
       .get(".button-holder")
+      .children()
       .first()
       .click()
 
@@ -44,6 +45,7 @@ describe("homepage", () => {
     })
       .as("getNewRandomImage")
       .get(".button-holder")
+      .children()
       .first()
       .next()
       .click()
