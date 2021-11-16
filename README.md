@@ -9,7 +9,7 @@ This app generates a random quote and background everytime users visit the homep
 Deployment hasn't been successuful when you see this message
 Experience full functionalities of the app [here]()
 
-### Test instructions!
+### Test instructions
 - Cloned down this repo
 - Install Cypress in root folder
 
@@ -18,9 +18,10 @@ npm install cypress --save-dev
 
 ```
 
-- Open Cypress console
+- CD into project root folder, start the project and Open Cypress console
 
 ```
+npm start
 npx cypress open
 ```
 
