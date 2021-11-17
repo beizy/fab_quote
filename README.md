@@ -9,15 +9,21 @@ This app generates a random quote and background everytime users visit the homep
 Experience full functionalities of the app [here](https://fab-quote.herokuapp.com/)
 
 
-
 ### Screenshots
-![Landing page](https://user-images.githubusercontent.com/73845209/141873777-0f91a5f1-1857-405f-b351-3beb8dda4f0c.png)
-![Favorite list](https://user-images.githubusercontent.com/73845209/141873959-5e5ae328-3f33-4cbe-b43d-14e3413a9e6f.png)
-
-![Make your own page](https://user-images.githubusercontent.com/73845209/141874191-5183bbd0-1a4e-493b-a360-9c9bafd3daa9.png)
+#### Homepage
+![homepage-crop](https://user-images.githubusercontent.com/73845209/142293991-cfc78ed0-2333-449f-9533-ff7acf442112.gif)
 
 
 
+
+#### Favorite list
+
+
+
+
+
+#### When I request background image too many times in a short time and reach API limit 
+![error](https://user-images.githubusercontent.com/73845209/142292730-efdd7a42-67ea-4fb9-88bd-4f7adc8d8baf.png)
 
 ### Technology
 
@@ -47,6 +53,10 @@ Experience full functionalities of the app [here](https://fab-quote.herokuapp.co
 - Let user download their customized quote card
 - Better looking app design
 - Dry up context by introducing reducer
+
+### API Credits
+- [Quotable](https://github.com/lukePeavey/quotable)
+- [Unsplash](https://unsplash.com/)
 
 ### Developed by
 
