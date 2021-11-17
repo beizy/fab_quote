@@ -1,8 +1,11 @@
 .card-container {
-  border: 1px solid black;
-  padding: 10px;
+  width: 650px;
   height: 100%;
+  margin: 0 auto;
+  padding: 10px;
   overflow-y: scroll;
+  background-color: #f2e9d8;
+  text-align: center;
 }
 
 .fav-card {
