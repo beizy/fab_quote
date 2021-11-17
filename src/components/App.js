@@ -1,4 +1,4 @@
-import "../styles/app.css"
+import "../styles/App.css"
 import { Route } from "react-router-dom"
 import Random from "./Random"
 import Favorites from "./Favorites"
