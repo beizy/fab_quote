@@ -6,26 +6,9 @@ This app generates a random quote and background everytime users visit the homep
 
 ### Deployed Link
 
-Deployment hasn't been successuful when you see this message
-Experience full functionalities of the app [here]()
+Experience full functionalities of the app [here](https://fab-quote.herokuapp.com/)
 
-### Test instructions
-- Cloned down this repo
-- Install Cypress in root folder
 
-```
-npm install cypress --save-dev
-
-```
-
-- CD into project root folder, start the project and Open Cypress console
-
-```
-npm start
-npx cypress open
-```
-
-- Click to run each test.
 
 ### Screenshots
 ![Landing page](https://user-images.githubusercontent.com/73845209/141873777-0f91a5f1-1857-405f-b351-3beb8dda4f0c.png)
