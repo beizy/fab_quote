@@ -15,9 +15,9 @@ const getRandomBg = () => {
 
 const getRandomQuote = tag => {
   if (!tag) {
-    return fetch("http://api.quotable.io/random?maxLength=140").then(response => checkResponse(response))
+    return fetch("https://api.quotable.io/random?maxLength=140").then(response => checkResponse(response))
   } else {
-    return fetch(`http://api.quotable.io/random?maxLength=140&tags=${tag}`).then(response => checkResponse(response))
+    return fetch(`https://api.quotable.io/random?maxLength=140&tags=${tag}`).then(response => checkResponse(response))
   }
 }
 
