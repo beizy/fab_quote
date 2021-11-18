@@ -11,6 +11,8 @@ export default function Favorites() {
   ))
 
   return (
-    <div className="card-container">{favQuotes.length ? favCards : "Favorite list is empty! Go collect some!"}</div>
+    <div className="card-container">
+      {favQuotes.length ? favCards : <h3 className="empty-msg">Favorite list is empty! Go collect some!</h3>}
+    </div>
   )
 }

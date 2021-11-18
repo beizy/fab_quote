@@ -8,21 +8,14 @@ This app generates a random quote and background everytime users visit the homep
 
 Experience full functionalities of the app [here](https://fab-quote.herokuapp.com/)
 
-
 ### Screenshots
-#### Homepage
+
+Homepage
 ![homepage-crop](https://user-images.githubusercontent.com/73845209/142293991-cfc78ed0-2333-449f-9533-ff7acf442112.gif)
 
+Favorite list
 
-
-
-#### Favorite list
-
-
-
-
-
-#### When I request background image too many times in a short time and reach API limit 
+When I request background image too many times in a short time and reach API limit
 ![error](https://user-images.githubusercontent.com/73845209/142292730-efdd7a42-67ea-4fb9-88bd-4f7adc8d8baf.png)
 
 ### Technology
@@ -55,6 +48,7 @@ Experience full functionalities of the app [here](https://fab-quote.herokuapp.co
 - Dry up context by introducing reducer
 
 ### API Credits
+
 - [Quotable](https://github.com/lukePeavey/quotable)
 - [Unsplash](https://unsplash.com/)
 

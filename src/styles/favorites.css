@@ -5,11 +5,11 @@
   padding: 10px;
   overflow-y: scroll;
   background-color: #f2e9d8;
-  text-align: center;
 }
 
 .fav-card {
   margin-bottom: 10px;
+  padding: 10px 10px;
   /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
@@ -28,6 +28,6 @@
   background-color: #54a8fe;
 }
 
-/* .card-del-btn-holder > button:hover {
-  background-color: #faf9f6;
-} */
+.empty-msg {
+  text-align: center;
+}
