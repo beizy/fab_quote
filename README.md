@@ -14,6 +14,11 @@ Homepage
 ![homepage-crop](https://user-images.githubusercontent.com/73845209/142293991-cfc78ed0-2333-449f-9533-ff7acf442112.gif)
 
 Favorite list
+![favlist-crop](https://user-images.githubusercontent.com/73845209/142336247-f0543924-7c2c-4e66-a2d0-f27eb1225046.gif)
+
+Diy page
+![diypage](https://user-images.githubusercontent.com/73845209/142337388-75fa04b2-ac90-48d6-a930-f138abb1ee19.gif)
+
 
 When I request background image too many times in a short time and reach API limit
 ![error](https://user-images.githubusercontent.com/73845209/142292730-efdd7a42-67ea-4fb9-88bd-4f7adc8d8baf.png)
@@ -44,8 +49,8 @@ When I request background image too many times in a short time and reach API lim
 ### Future Additions
 
 - Let user download their customized quote card
-- Better looking app design
 - Dry up context by introducing reducer
+- Responsive design for mobile users
 
 ### API Credits
 
