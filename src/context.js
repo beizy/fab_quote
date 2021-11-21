@@ -18,13 +18,13 @@ const ContextProvider = props => {
     return saved ? JSON.parse(saved) : []
   })
 
-  const [textColor, setTextColor] = useState("black")
-
   const [diyQuote, setDiyQuote] = useState({})
 
-  const [diyQuotePosition, setDiyQuotePosition] = useState({})
+  const [diyQuotePosition, setDiyQuotePosition] = useState({ top: 0, left: 0 })
 
   const [diyQuoteFont, setDiyQuoteFont] = useState({})
+
+  const [diyQuoteSize, setDiyQuoteSize] = useState({ width: "100%", height: "auto" })
 
   const addToFav = quote => {
     if (!favQuotes.some(ele => ele.id === quote.id)) {
@@ -34,10 +34,6 @@ const ContextProvider = props => {
   const deleteFromFav = quoteId => {
     let filtered = favQuotes.filter(ele => ele.id !== quoteId)
     setFavQuotes(filtered)
-  }
-
-  const toggleTextColor = () => {
-    textColor === "black" ? setTextColor("white") : setTextColor("black")
   }
 
   useEffect(() => {
@@ -59,10 +55,10 @@ const ContextProvider = props => {
         setQuoteTag,
         diyQuotePosition,
         setDiyQuotePosition,
-        textColor,
-        toggleTextColor,
         diyQuoteFont,
         setDiyQuoteFont,
+        diyQuoteSize,
+        setDiyQuoteSize,
       }}
     >
       {props.children}

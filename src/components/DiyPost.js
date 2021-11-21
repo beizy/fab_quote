@@ -1,9 +1,18 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { AppContext } from "../context"
 import WebFont from "webfontloader"
 
 export default function DiyPost() {
-  const { randomQuote, diyQuote, diyQuotePosition, diyQuoteFont } = useContext(AppContext)
+  const {
+    randomQuote,
+    diyQuote,
+    diyQuotePosition,
+    setDiyQuotePosition,
+    diyQuoteFont,
+    setDiyQuoteFont,
+    diyQuoteSize,
+    setDiyQuoteSize,
+  } = useContext(AppContext)
 
   useEffect(() => {
     WebFont.load({
@@ -29,6 +38,33 @@ export default function DiyPost() {
     })
   }, [])
 
+  useEffect(() => {
+    setDiyQuoteSize({
+      width: ref.current.getBoundingClientRect().width,
+      height: ref.current.getBoundingClientRect().height,
+    })
+
+    return () => {
+      setDiyQuotePosition({ top: 0, left: 0 })
+      setDiyQuoteFont({})
+      setDiyQuoteSize({ width: "100%" })
+    }
+  }, [])
+
+  useEffect(() => {
+    setDiyQuoteSize({
+      width: ref.current.getBoundingClientRect().width,
+      height: ref.current.getBoundingClientRect().height,
+    })
+    // return () => {
+    //   setDiyQuotePosition({ top: 0, left: 0 })
+    //   setDiyQuoteFont({})
+    //   // setDiyQuoteSize({ width: "100%" })
+    // }
+  }, [diyQuotePosition])
+
+  const ref = useRef(null)
+
   return (
     <div className="diy-post-holder">
       <div
@@ -41,9 +77,11 @@ export default function DiyPost() {
       >
         <div
           className="diy-quote-container"
+          ref={ref}
           style={{
             ...diyQuotePosition,
             ...diyQuoteFont,
+            width: diyQuoteSize.width,
           }}
         >
           <h1 className="diy-quote-text">{diyQuote.text}</h1>

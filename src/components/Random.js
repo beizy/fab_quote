@@ -10,11 +10,11 @@ import "../styles/random.css"
 import { AppContext } from "../context"
 
 export default function Random() {
-  const { randomQuote, setRandomQuote, addToFav, textColor, toggleTextColor, quoteTag, setQuoteTag, setFavQuotes } =
-    useContext(AppContext)
+  const { randomQuote, setRandomQuote, addToFav, quoteTag, setQuoteTag } = useContext(AppContext)
   const [errorMsg, setErrorMsg] = useState("Still loading")
   const [searchInput, setSearchInput] = useState("")
   const [bgUrls, setBgUrls] = useState([])
+  const [textColor, setTextColor] = useState("black")
 
   useEffect(() => {
     Promise.all([getRandomQuote(), getRandomBg()])
@@ -70,6 +70,10 @@ export default function Random() {
         bgUrl: bgUrls[randomIndex],
       })
     }
+  }
+
+  const toggleTextColor = () => {
+    textColor === "black" ? setTextColor("white") : setTextColor("black")
   }
 
   const handleTag = event => {

@@ -5,25 +5,24 @@ import InputAdornment from "@mui/material/InputAdornment"
 import Button from "@mui/material/Button"
 
 export default function PositionControl() {
-  const { diyQuotePosition, setDiyQuotePosition } = useContext(AppContext)
+  const { diyQuotePosition, setDiyQuotePosition, diyQuoteSize, setDiyQuoteSize } = useContext(AppContext)
 
   const handlePostion = event => {
-    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: `${event.target.value}px`, transform: undefined })
+    setDiyQuotePosition({ ...diyQuotePosition, [event.target.name]: `${event.target.value}px` })
   }
 
-  const centerH = () => {
-    setDiyQuotePosition({ ...diyQuotePosition, left: "50%", transform: "translateX(-50%)" })
-  }
-  const centerV = () => {
-    setDiyQuotePosition({ ...diyQuotePosition, top: "50%", transform: "translateY(-50%)" })
+  const handleWidth = e => {
+    setDiyQuoteSize({ ...diyQuoteSize, width: `${e.target.value}px` })
   }
 
-  const center = () => {
+  const center = (t, l) => {
+    let topValue = t ? diyQuotePosition.top : `${parseInt((400 - diyQuoteSize.height) / 2)}px`
+    let leftValue = l ? diyQuotePosition.left : `${parseInt((600 - diyQuoteSize.width) / 2)}px`
+
     setDiyQuotePosition({
       ...diyQuotePosition,
-      left: "50%",
-      top: "50%",
-      transform: "translateX(-50%) translateY(-50%)",
+      left: leftValue,
+      top: topValue,
     })
   }
 
@@ -36,7 +35,7 @@ export default function PositionControl() {
           endAdornment: <InputAdornment position="end">px</InputAdornment>,
         }}
         inputProps={{ name: "width" }}
-        onChange={handlePostion}
+        onChange={handleWidth}
       />
       <TextField
         label="Position from Top"
@@ -56,13 +55,13 @@ export default function PositionControl() {
         inputProps={{ name: "left" }}
         onChange={handlePostion}
       />
-      <Button variant="outlined" onClick={centerH}>
+      <Button variant="outlined" onClick={() => center(1, 0)}>
         Center Horizontally
       </Button>
-      <Button variant="outlined" onClick={centerV}>
+      <Button variant="outlined" onClick={() => center(0, 1)}>
         Center Vertically
       </Button>
-      <Button variant="outlined" onClick={center}>
+      <Button variant="outlined" onClick={() => center(0, 0)}>
         Center Absolute
       </Button>
       <p>Two positon inputs and center buttons will override each other.</p>
