@@ -24,7 +24,7 @@ const ContextProvider = props => {
 
   const [diyQuoteFont, setDiyQuoteFont] = useState({})
 
-  const [diyQuoteSize, setDiyQuoteSize] = useState({ width: "100%", height: "auto" })
+  const [diyQuoteSize, setDiyQuoteSize] = useState({ width: "100%", height: null })
 
   const addToFav = quote => {
     if (!favQuotes.some(ele => ele.id === quote.id)) {

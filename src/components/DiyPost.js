@@ -39,11 +39,6 @@ export default function DiyPost() {
   }, [])
 
   useEffect(() => {
-    setDiyQuoteSize({
-      width: ref.current.getBoundingClientRect().width,
-      height: ref.current.getBoundingClientRect().height,
-    })
-
     return () => {
       setDiyQuotePosition({ top: 0, left: 0 })
       setDiyQuoteFont({})
@@ -56,12 +51,7 @@ export default function DiyPost() {
       width: ref.current.getBoundingClientRect().width,
       height: ref.current.getBoundingClientRect().height,
     })
-    // return () => {
-    //   setDiyQuotePosition({ top: 0, left: 0 })
-    //   setDiyQuoteFont({})
-    //   // setDiyQuoteSize({ width: "100%" })
-    // }
-  }, [diyQuotePosition])
+  }, [diyQuotePosition, diyQuote, diyQuoteFont])
 
   const ref = useRef(null)
 
