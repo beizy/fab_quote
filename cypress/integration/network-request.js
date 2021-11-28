@@ -11,7 +11,7 @@ describe("Network request not in optimal condition", () => {
   //   }).as("delayedBackground")
   // })
 
-  it("Home page should show loading state before api data is ready", () => {
+  it.skip("Home page should show loading state before api data is ready", () => {
     cy.intercept("GET", "http://api.quotable.io/random?maxLength=140", {
       fixture: "randomQuote1.json",
       delay: 2000,

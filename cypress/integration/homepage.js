@@ -20,15 +20,15 @@ describe("homepage", () => {
       )
   })
 
-  it("Upon arrival, User should see a randomly generated quote", () => {
+  it.skip("Upon arrival, User should see a randomly generated quote", () => {
     cy.get(".quote-text").contains("Either you run the day or the day runs you.")
   })
 
-  it("User should also see the author of the quote", () => {
+  it.skip("User should also see the author of the quote", () => {
     cy.get(".quote-author").contains("Jim Rohn")
   })
 
-  it("When User clicks 'New Random Quote' button, User should see a different quote", () => {
+  it.skip("When User clicks 'New Random Quote' button, User should see a different quote", () => {
     cy.intercept("GET", "http://api.quotable.io/random?maxLength=140", { fixture: "randomQuote2.json" })
       .as("getNewRandomQuote")
       .get(".button-holder")

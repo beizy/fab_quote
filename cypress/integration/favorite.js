@@ -31,7 +31,7 @@ describe("Add to Favorite function and Favorite page", () => {
     cy.get(".card-container").first().find("button")
   })
 
-  it("When User clicks Delete button, it should delete the quote from favorites", () => {
+  it.skip("When User clicks Delete button, it should delete the quote from favorites", () => {
     cy.get(".button-holder").children().eq(3).click()
     cy.get(".fav-link").click()
     cy.get(".card-container").first().find("button").click()

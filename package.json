@@ -20,7 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --forceExit",
+    "test": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:run": "cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.0.0"
+    "cypress": "^9.0.0",
+    "start-server-and-test": "^1.14.0"
   }
 }
