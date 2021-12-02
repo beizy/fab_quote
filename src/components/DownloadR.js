@@ -24,7 +24,7 @@
 //     console.log(qAuthorTop)
 
 //     console.log(
-//       `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.color=${color}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.color=${color}&b.top=${qAuthorTop}`
+//       `http://img.bruzu.com/?apiKey=&backgroundImage=${bgUrl}&width=600&height=400&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.color=${color}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.color=${color}&b.top=${qAuthorTop}`
 //     )
 //   }, [])
 

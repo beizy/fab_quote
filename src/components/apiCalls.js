@@ -31,7 +31,7 @@ const getBgByQuery = searchTerm => {
 // Below fetch does not work in local host. Left here for future additions
 // const randomQuoteDownload = (bgUrl, qText, qAuthor, color, qAuthorTop) => {
 //   return fetch(
-//     `http://img.bruzu.com/?apiKey=BRUZU-T-v8xLDDd&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.color=${color}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.color=${color}&b.top=${qAuthorTop}`
+//     `http://img.bruzu.com/?apiKey=&backgroundImage=${bgUrl}&width=600&height=400&download=1&a.text=${qText}&a.textAlign=center&a.fontSize=32&a.color=${color}&b.text=${qAuthor}&b.textAlign=center&b.fontSize=16&b.color=${color}&b.top=${qAuthorTop}`
 //   )}
 
 export { getRandomQuote, getRandomBg, getBgByQuery }
