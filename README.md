@@ -1,4 +1,4 @@
-# Fab Quote
+# Fab Quote ![Travis CI status badge](https://app.travis-ci.com/beizy/fab_quote.svg?branch=main)
 
 ### Abstract
 
